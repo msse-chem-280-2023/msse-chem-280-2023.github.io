@@ -54,6 +54,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'day2/01-MC-pi';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The Lennard Jones Equation" href="02-LJ-eqn.html" />
+    <link rel="prev" title="Meet your group" href="00-group-meeting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -157,6 +159,13 @@
                     </li>
                 
 
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../day2.html">
+                        Day 2
+                      </a>
+                    </li>
+                
+
                 <li class="nav-item">
                   <a class="nav-link nav-external" href="https://msse.berkeley.edu/">
                     MSSE
@@ -250,7 +259,7 @@ document.write(`
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -278,6 +287,13 @@ document.write(`
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../day1.html">
                         Day 1
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../day2.html">
+                        Day 2
                       </a>
                     </li>
                 
@@ -340,6 +356,22 @@ document.write(`
     
   </div>
   
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00-group-meeting.html">Meet your group</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Intro to Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-LJ-eqn.html">The Lennard Jones Equation</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="group-assignment.html">Day 2 - Group Assignment</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
@@ -372,6 +404,9 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
+    
+    <li class="breadcrumb-item"><a href="../day2.html" class="nav-link">Day 2</a></li>
+    
     <li class="breadcrumb-item active" aria-current="page">Intro to Monte Carlo Methods</li>
   </ul>
 </nav>
@@ -618,8 +653,8 @@ PYTHON</label><div class="sd-tab-content docutils">
 <p>Monte Carlo methods are numerical techniques
 frequently used to estimate complex multidimensional integrals which otherwise could not be performed. The idea of Monte Carlo integration is to estimate the value of an integral by generating random points from the probability density.</p>
 <p>For instance, the integral of the function <span class="math notranslate nohighlight">\(f(\textbf{x})\)</span>, where <span class="math notranslate nohighlight">\(\textbf{x} \in \Re^{M}\)</span>, is approximated as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fd5b5dd9-e307-47c5-9c99-beb4d793cc5b">
-<span class="eqno">(1)<a class="headerlink" href="#equation-fd5b5dd9-e307-47c5-9c99-beb4d793cc5b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7d680913-f62c-429c-b043-86b663120b2a">
+<span class="eqno">(1)<a class="headerlink" href="#equation-7d680913-f62c-429c-b043-86b663120b2a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 	 I = \int_V f(\textbf{x}) \, d\textbf{x} = \int_V
 	 \frac{f(\textbf{x})}{h(\textbf{x})} h(\textbf{x}) \, d\textbf{x} 
 	 = \left&lt; \frac{f(\textbf{x})}{h(\textbf{x})} \right&gt;_{h(\textbf{x})}
@@ -633,14 +668,14 @@ generating random samples of <span class="math notranslate nohighlight">\(\textb
 distribution
 <span class="math notranslate nohighlight">\(h(\textbf{x})\)</span>. The simplest case is to uniformly generate <span class="math notranslate nohighlight">\(\textbf{x}\)</span>
 in the volume (<span class="math notranslate nohighlight">\(V\)</span>). In this way, <span class="math notranslate nohighlight">\(h(\textbf{x})\)</span> becomes constant as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1f335a0e-f42c-44c0-a921-d7e05c86449f">
-<span class="eqno">(2)<a class="headerlink" href="#equation-1f335a0e-f42c-44c0-a921-d7e05c86449f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-dac54bb2-e2ad-43e8-a871-0ded70c4d1c4">
+<span class="eqno">(2)<a class="headerlink" href="#equation-dac54bb2-e2ad-43e8-a871-0ded70c4d1c4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 	h(\textbf{x}) = \frac{1}{V}
 	\label{eq.uniformDist}
 \end{equation}\]</div>
 <p>Using this sampling density <span class="math notranslate nohighlight">\(h(\textbf{x})\)</span>, the integral becomes</p>
-<div class="amsmath math notranslate nohighlight" id="equation-60674f70-0c22-4a1d-b8d0-63bb7e63b643">
-<span class="eqno">(3)<a class="headerlink" href="#equation-60674f70-0c22-4a1d-b8d0-63bb7e63b643" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cae9dfd1-658b-4469-9d86-27989b80da4b">
+<span class="eqno">(3)<a class="headerlink" href="#equation-cae9dfd1-658b-4469-9d86-27989b80da4b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 	I = \int_V f(\textbf{x}) \, d\textbf{x} \approx \frac{V}{N} \sum_{i=1}^N
 	f(\textbf{x}_i)
 	\label{eq.averageUniform}
@@ -668,6 +703,24 @@ integrand evaluated using the <span class="math notranslate nohighlight">\(i^{th
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="00-group-meeting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Meet your group</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02-LJ-eqn.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Lennard Jones Equation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
