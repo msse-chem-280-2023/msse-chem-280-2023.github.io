@@ -428,6 +428,7 @@ document.write(`
 <p>Day 2 contains four possible homework tasks.
 Divide the tasks up among your team members.
 Each person should complete one task for homework and review the task of at least one teammate.</p>
+<p>For each task, create a jupyter notebook with a file name of the format <code class="docutils literal notranslate"><span class="pre">lastname_firstname_task_x.ipynb</span></code> where <code class="docutils literal notranslate"><span class="pre">x</span></code> is your task number.</p>
 <section id="task-1-systematic-investigation-of-error-in-monte-carlo-calculation">
 <h2>Task 1 - Systematic Investigation of Error in Monte Carlo Calculation<a class="headerlink" href="#task-1-systematic-investigation-of-error-in-monte-carlo-calculation" title="Permalink to this heading">#</a></h2>
 <p>For this task, you will return to your notebook where we calculated the value of <span class="math notranslate nohighlight">\(\pi\)</span> using Monte Carlo Methods.</p>
@@ -441,9 +442,9 @@ Each person should complete one task for homework and review the task of at leas
 </section>
 <section id="task-2-investigating-the-lennard-jones-equation">
 <h2>Task 2 - Investigating the Lennard Jones Equation<a class="headerlink" href="#task-2-investigating-the-lennard-jones-equation" title="Permalink to this heading">#</a></h2>
-<p>Write a <code class="docutils literal notranslate"><span class="pre">calculate_LJ</span></code> function that includes parameters for setting <span class="math notranslate nohighlight">\(\sigma\$ and \)</span>\epsilon$.</p>
+<p>Write a <code class="docutils literal notranslate"><span class="pre">calculate_LJ</span></code> function that includes parameters for setting <span class="math notranslate nohighlight">\(\sigma\)</span> and <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
 <p>After writing the function, perform a set of calculations with <span class="math notranslate nohighlight">\(\sigma\)</span> and <span class="math notranslate nohighlight">\(\epsilon\)</span> both equal to one. Using these values, calculate the Lennard Jones potential energy for a range of distances, r, from r = 0.1 to r = 5 in increments of 0.1. Save your results in a list.</p>
-<p>Next, perform a set of calculations where <span class="math notranslate nohighlight">\(\sigma\$ is equal to 2 and \)</span>\epsilon$ is equal to one. Then set <span class="math notranslate nohighlight">\(\sigma\$ equal to 1 and \)</span>\epsilon$ equal to two. For each set of calculations, save your result in a list.</p>
+<p>Next, perform a set of calculations where <span class="math notranslate nohighlight">\(\sigma\)</span> is equal to 2 and <span class="math notranslate nohighlight">\(\epsilon\)</span> is equal to one. Then set <span class="math notranslate nohighlight">\(\sigma\)</span> equal to 1 and <span class="math notranslate nohighlight">\(\epsilon\)</span> equal to two. For each set of calculations, save your result in a list.</p>
 <p>Visualize all three results on a graph using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p>
 <p>In your submission, include a markdown cell that contains a reflection (at least five sentences) on your approach and observations.</p>
 </section>
@@ -468,6 +469,11 @@ Each person should complete one task for homework and review the task of at leas
 </pre></div>
 </div>
 <p>After writing your function, include a few test cases “sanity checks” to ensure that your function is behaving correctly.</p>
+<div class="warning admonition">
+<p class="admonition-title">The distance function</p>
+<p>You cannot use a predefined distance function like <code class="docutils literal notranslate"><span class="pre">math.dist</span></code>
+for this task.</p>
+</div>
 <p>In your submission, include a markdown cell that contains a reflection (at least five sentences) on your approach and observations.</p>
 </section>
 </section>
