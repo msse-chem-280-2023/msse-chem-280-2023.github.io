@@ -49,6 +49,8 @@
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'day3/00-group-meeting';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -433,21 +435,31 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="python-warm-up-returning-to-the-lj-equation">
 <h1>Python Warm Up &amp; Returning to the LJ Equation<a class="headerlink" href="#python-warm-up-returning-to-the-lj-equation" title="Permalink to this heading">#</a></h1>
-<p>To start class today, we will spend about half an hour reviewing Python concepts, and another half hour working with the Lennard Jones equation.</p>
+<p>To start class today, we will spend about 20 minutes reviewing Python concepts, and another half hour working with the Lennard Jones equation.</p>
 <section id="python-review">
 <h2>Python Review<a class="headerlink" href="#python-review" title="Permalink to this heading">#</a></h2>
-<div class="tip admonition">
-<p class="admonition-title">The interactive Python interpreter</p>
-<p>In the article linked below, you will occassionally see Python blocks where lines begin with three greater-than symbols, <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code>.
-This denotes execution of code in the <em>interactive Python interpreter</em>.
-You can enter the <em>interactive Python interpreter</em> by typing <code class="docutils literal notranslate"><span class="pre">python</span></code> into your terminal.
-You will be using a Python version that matches the version installed in your environment.</p>
-<p>To use the interactive Python interpreter, you type Python code following <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> and press the <code class="docutils literal notranslate"><span class="pre">Enter</span> <span class="pre">key.</span></code></p>
-</div>
-<p>Read this article from <a class="reference external" href="https://realpython.com/defining-your-own-python-function/">Real Python about functions</a>.
-Start at the beginning of the article, and read through “The <code class="docutils literal notranslate"><span class="pre">return</span></code> Statement”.
-After you have read the article, take the Day 3 Opening Quiz on bCourses.
-You should plan to read the article and take the quiz within 30 minutes.</p>
+<p>Pick a chapter from the e-book <a class="reference external" href="https://greenteapress.com/thinkpython/html/index.html">Think Python</a>.
+To pick your chapter, read the topics and one you think you don’t understand.
+To complete the activity, go into the break out room for the chapter you pick.
+Read the chapter for 15 minutes. As you read, take note of at least four new or interesting points.
+If you have any questions, or if anything is unclear, make a note of that also.
+During the last 5 minutes of the Python Review, each group should share their observations on the <a class="reference external" href="https://docs.google.com/document/d/1Bs5K45Y9uPrfE1XoGYgawg4_oA9DGKwAGTD_-KCbe0Y/edit?usp=sharing">class Google Doc</a>]. (You must be logged into your UC Berkeley account to view the Google Doc.)</p>
+</section>
+<section id="calculation-of-lennard-jones-energy-for-system-of-particles">
+<h2>Calculation of Lennard Jones Energy for System of Particles<a class="headerlink" href="#calculation-of-lennard-jones-energy-for-system-of-particles" title="Permalink to this heading">#</a></h2>
+<p>Take 20 minutes to work alone, then 10 minutes to discuss your answers as a group on the following questions.</p>
+<p>When applying the LJ potential to a set of atomic coordinates, the total potential energy of the system is equal to the sum of the LJ energy over all pairwise interactions:</p>
+<div class="math notranslate nohighlight">
+\[
+U \left( \textbf{r}^N \right) = \sum_{i=1}^{N} \sum_{j&gt;i}^{N} U \left( r_{ij} \right)
+\]</div>
+<p>Consider the system of three particles represented by the picture below.</p>
+<img alt="../_images/three-particles.png" class="align-center" src="../_images/three-particles.png" />
+<p>Complete the following tasks:</p>
+<ol class="arabic simple">
+<li><p>Based on what we discussed yesterday, make an estimate of what you would expect the total system energy to be. For this, think about our expected energy between two particles at the equilibrium distance.</p></li>
+<li><p>Calculate the total system energy <strong>by hand</strong>, using a pen/paper and a calculator (you can use a calculator on a computer). If you finish early, see if you can translate your calculation into a Python code.</p></li>
+</ol>
 </section>
 </section>
 
@@ -481,6 +493,7 @@ You should plan to read the article and take the quiz within 30 minutes.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-review">Python Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-lennard-jones-energy-for-system-of-particles">Calculation of Lennard Jones Energy for System of Particles</a></li>
 </ul>
   </nav></div>
 

@@ -446,7 +446,7 @@ The idea is that if particles are beyond a certain distance from one another, th
 <section id="discussion-questions">
 <h3>Discussion Questions<a class="headerlink" href="#discussion-questions" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Consider a system of 3 particles. How many pairwise particle-particle interactions will there be? What about 10 or 100 particles? Consider a system with a density of 1. Using this density, how many particles are in a sphere with radius 1, 2, 5, and 10 units? (These are math problems, you don’t have to use programming to solve them, but you can.)</p></li>
+<li><p>Consider a system of 2, 3, 4, and 5 particles. How many pairwise particle-particle interactions will there be? What about 10 or 100 particles? Consider a system with a density of 1. Using this density, how many particles are in a sphere with radius 1, 2, 5, and 10 units? (These are math problems, you don’t have to use programming to solve them, but you can.)</p></li>
 <li><p>Can you think of the benefits associated with using a cut-off?</p></li>
 </ol>
 <p>We can modify our <code class="docutils literal notranslate"><span class="pre">calculate_total_energy</span></code> function to take in a cut-off value:</p>
@@ -492,6 +492,8 @@ PYTHON</label><div class="sd-tab-content docutils">
 </div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+Add a counter to your energy calculation and experiment with the cut off distance to see the effect on the number of interactions.
+
 ## Periodic Boundaries
 Modern molecular simulations can be carried out with up to millions of particles.
 But, how many particles are in a mole of material?
