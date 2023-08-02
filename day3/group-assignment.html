@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Day 2 - Group Assignment &#8212; UC Berkeley Chem 280  documentation</title>
+    <title>Group Homework Assignment Day 3 &#8212; UC Berkeley Chem 280  documentation</title>
   
   
   
@@ -51,11 +51,11 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'day2/group-assignment';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'day3/group-assignment';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Day 3" href="../day3.html" />
-    <link rel="prev" title="The Lennard Jones Equation" href="02-LJ-eqn.html" />
+    <link rel="next" title="Individual Homework Assignment #1" href="../individual-assignments/01-07-individualhw.html" />
+    <link rel="prev" title="Cut-offs and Periodic Boundaries" href="02-computational-tricks.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -159,14 +159,14 @@
                     </li>
                 
 
-                    <li class="nav-item current active">
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../day2.html">
                         Day 2
                       </a>
                     </li>
                 
 
-                    <li class="nav-item">
+                    <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../day3.html">
                         Day 3
                       </a>
@@ -306,14 +306,14 @@ document.write(`
                     </li>
                 
 
-                    <li class="nav-item current active">
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../day2.html">
                         Day 2
                       </a>
                     </li>
                 
 
-                    <li class="nav-item">
+                    <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../day3.html">
                         Day 3
                       </a>
@@ -391,12 +391,12 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="00-group-meeting.html">Meet your group</a></li>
-<li class="toctree-l1"><a class="reference internal" href="01-MC-pi.html">Intro to Monte Carlo Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02-LJ-eqn.html">The Lennard Jones Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-LJ-system.html">Lennard Jones Energy of Atomic System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-computational-tricks.html">Cut-offs and Periodic Boundaries</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Day 2 - Group Assignment</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Group Homework Assignment Day 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../individual-assignments/01-07-individualhw.html">Individual Homework Assignment #1</a></li>
 </ul>
 </div>
 </nav></div>
@@ -435,9 +435,9 @@ document.write(`
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../day2.html" class="nav-link">Day 2</a></li>
+    <li class="breadcrumb-item"><a href="../day3.html" class="nav-link">Day 3</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Day 2 - Group Assignment</li>
+    <li class="breadcrumb-item active" aria-current="page">Group Homework Assignment Day 3</li>
   </ul>
 </nav>
 </div>
@@ -454,12 +454,52 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="day-2-group-assignment">
-<h1>Day 2 - Group Assignment<a class="headerlink" href="#day-2-group-assignment" title="Permalink to this heading">#</a></h1>
-<p>Day 2 contains four possible homework tasks.
-Divide the tasks up among your team members.
-Each person should complete one task for homework and review the task of at least one teammate.</p>
-<p>For each task, create a jupyter notebook with a file name of the format <code class="docutils literal notranslate"><span class="pre">lastname_firstname_task_x.ipynb</span></code> where <code class="docutils literal notranslate"><span class="pre">x</span></code> is your task number.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="group-homework-assignment-day-3">
+<h1>Group Homework Assignment Day 3<a class="headerlink" href="#group-homework-assignment-day-3" title="Permalink to this heading">#</a></h1>
+<section id="task-1-alternate-initial-configuration-random-points">
+<h2>Task 1 - Alternate Initial Configuration - Random Points<a class="headerlink" href="#task-1-alternate-initial-configuration-random-points" title="Permalink to this heading">#</a></h2>
+<p>So far we have only used an initial configuration from a file. For this task, you will write a function which can generate initial system configurations from a number of particles and a desired system density. Make sure your function includes docstrings!</p>
+<p>Write a function that makes a configuration by randomly placing points in a 3 dimensional box. The function should return coordinates, box_length the same way our `read_xyz`` function does so we can switch out the two without changing our code.</p>
+</section>
+<section id="task-2-alternate-initial-configuration-cubic-lattice">
+<h2>Task 2 - Alternate Initial Configuration - Cubic Lattice<a class="headerlink" href="#task-2-alternate-initial-configuration-cubic-lattice" title="Permalink to this heading">#</a></h2>
+<p>This task is similar to task 1 except that for this function, you should generate points on a cubic lattice. Similar to the random configuration generator, the function should accept arguments for the number of atoms and the desired system density.</p>
+</section>
+<section id="task-3-tail-correction">
+<h2>Task 3 - Tail Correction<a class="headerlink" href="#task-3-tail-correction" title="Permalink to this heading">#</a></h2>
+<p>Truncating interactions using a cutoff removes contribution to the potential energy that might be non-negligible.  The tail correction for our system makes a correction for use of the cutoff. We only have to calculate this once at the start of our simulation. The formula is:</p>
+<div class="math notranslate nohighlight">
+\[ U_{tail} = \frac{8 \pi N^2}{3 V} \epsilon \sigma^3
+	\left[\frac{1}{3} \left(\frac{\sigma}{r_c} \right)^9 
+	- \left(\frac{\sigma}{r_c} \right)^3 \right]
+\]</div>
+<p>In our reduced units:</p>
+<div class="math notranslate nohighlight">
+\[ U_{tail} = \frac{8 \pi N^2}{3 V}
+	\left[\frac{1}{3} \left(\frac{1}{r_c} \right)^9 
+	- \left(\frac{1}{r_c} \right)^3 \right]
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(V\)</span> is the volume of the simulation box, and <span class="math notranslate nohighlight">\(N\)</span> is the number of particles.</p>
+<ol class="arabic simple">
+<li><p>Write a function <code class="docutils literal notranslate"><span class="pre">calculate_tail_correction</span></code> which calculates the tail correction. Your function should have <code class="docutils literal notranslate"><span class="pre">box_length</span></code>, <code class="docutils literal notranslate"><span class="pre">n_particles</span></code> (number of particles) and <code class="docutils literal notranslate"><span class="pre">cut-off</span></code> as function parameters. You can calculate the volume of the box from the <code class="docutils literal notranslate"><span class="pre">box_length</span></code>. Assume a cubic box.</p></li>
+<li><p>Write an <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement to check against the reported value from <a class="reference external" href="https://www.nist.gov/mml/csd/chemical-informatics-research-group/lennard-jones-fluid-reference-calculations">NIST</a>. The value you are looking for is <span class="math notranslate nohighlight">\(U_{LRC}\)</span>. We were using <code class="docutils literal notranslate"><span class="pre">Configuration</span> <span class="pre">1</span></code> in class.</p></li>
+</ol>
+<section id="task-4-periodic-boundaries-most-difficult">
+<h3>Task 4 - Periodic boundaries (most difficult)<a class="headerlink" href="#task-4-periodic-boundaries-most-difficult" title="Permalink to this heading">#</a></h3>
+<p>This is a very important function, and a version will be provided to you.
+If your group contains a member who would like a challenge, they should attempt this task.</p>
+<ol class="arabic simple">
+<li><p>Modify the calculate distance function to account for periodic boundaries. Your function should take an additional keyword argument, <code class="docutils literal notranslate"><span class="pre">box_length</span></code>, which has a default value of <code class="docutils literal notranslate"><span class="pre">None</span></code>.  If <code class="docutils literal notranslate"><span class="pre">box_length</span></code> is specified, the <code class="docutils literal notranslate"><span class="pre">box_length</span></code> value should be used to calculate the minimum image distance (in other words, the distance considering periodic boundaries).
+When calculating the minimum image distance, follow this procedure:</p>
+<ul class="simple">
+<li><p>Calculate the distance in each dimension as we did previously (ie <span class="math notranslate nohighlight">\(x_2 - x_1\)</span> )</p></li>
+<li><p>From your group discussion you should have arrived at the conclusion that the maximum distance in any direction (<code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, or <code class="docutils literal notranslate"><span class="pre">z</span></code>) was  <span class="math notranslate nohighlight">\(\frac {l_B}{2}\)</span> (where $<span class="math notranslate nohighlight">\(l_B\)</span><span class="math notranslate nohighlight">\( is the box length). Therefore, if our calculated distance in any direction is greater than \)</span>\frac {l_B}{2}<span class="math notranslate nohighlight">\(, we will want to subtract \)</span>l_B$ from the value. If there is more than one box length between the two points, you will want to subtract the appropriate number.</p></li>
+</ul>
+</li>
+<li><p>Make sure to test behavior of your function using a few (at least 2) test cases and <code class="docutils literal notranslate"><span class="pre">assert</span></code> statements. Write explanations of the test cases you chose.</p></li>
+</ol>
+</section>
+</section>
 <section id="reviewing-your-teammate-s-change">
 <h2>Reviewing your teammate’s change<a class="headerlink" href="#reviewing-your-teammate-s-change" title="Permalink to this heading">#</a></h2>
 <p>You may need too pull the changes from your teammate’s branch when you are reviewing their pull request. You can pull their branch to your local computer by doing</p>
@@ -474,54 +514,10 @@ git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </sp
 </div>
 </div>
 </div>
-<p>You should then be able to see your teammates files. You should open their Jupyter notebook and review their code. If any changes are needed, leave this in your review on GitHub.</p>
 </section>
-<section id="task-1-systematic-investigation-of-error-in-monte-carlo-calculation">
-<h2>Task 1 - Systematic Investigation of Error in Monte Carlo Calculation<a class="headerlink" href="#task-1-systematic-investigation-of-error-in-monte-carlo-calculation" title="Permalink to this heading">#</a></h2>
-<p>For this task, you will return to your notebook where we calculated the value of <span class="math notranslate nohighlight">\(\pi\)</span> using Monte Carlo Methods.</p>
-<p>Your task is to investigate the effect of increasing the number of samples on the error of the calculation.</p>
-<p>Modify your Monte Carlo code to print the percent error in your pi calculation for <code class="docutils literal notranslate"><span class="pre">10</span></code>, <code class="docutils literal notranslate"><span class="pre">100</span></code>, <code class="docutils literal notranslate"><span class="pre">1000</span></code>, <code class="docutils literal notranslate"><span class="pre">10,000</span></code>, <code class="docutils literal notranslate"><span class="pre">100,000</span></code>, and <code class="docutils literal notranslate"><span class="pre">1,000,000</span></code> points. For an extra challenge, try visualizing your results using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p>
-<div class="tip admonition">
-<p class="admonition-title">Reference Values</p>
-<p>You can use <code class="docutils literal notranslate"><span class="pre">math.pi</span></code> as a reference value and <code class="docutils literal notranslate"><span class="pre">math.fabs</span></code> to get an absolute value when calculating your percent error.</p>
-</div>
-<p>In your submission, include a markdown cell that contains a reflection (at least five sentences) on your approach and observations.</p>
-</section>
-<section id="task-2-investigating-the-lennard-jones-equation">
-<h2>Task 2 - Investigating the Lennard Jones Equation<a class="headerlink" href="#task-2-investigating-the-lennard-jones-equation" title="Permalink to this heading">#</a></h2>
-<p>Write a <code class="docutils literal notranslate"><span class="pre">calculate_LJ</span></code> function that includes parameters for setting <span class="math notranslate nohighlight">\(\sigma\)</span> and <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
-<p>After writing the function, perform a set of calculations with <span class="math notranslate nohighlight">\(\sigma\)</span> and <span class="math notranslate nohighlight">\(\epsilon\)</span> both equal to one. Using these values, calculate the Lennard Jones potential energy for a range of distances, r, from r = 0.1 to r = 5 in increments of 0.1. Save your results in a list.</p>
-<p>Next, perform a set of calculations where <span class="math notranslate nohighlight">\(\sigma\)</span> is equal to 2 and <span class="math notranslate nohighlight">\(\epsilon\)</span> is equal to one. Then set <span class="math notranslate nohighlight">\(\sigma\)</span> equal to 1 and <span class="math notranslate nohighlight">\(\epsilon\)</span> equal to two. For each set of calculations, save your result in a list.</p>
-<p>Visualize all three results on a graph using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p>
-<p>In your submission, include a markdown cell that contains a reflection (at least five sentences) on your approach and observations.</p>
-</section>
-<section id="task-3-calculating-the-distance-betweent-two-points">
-<h2>Task 3 - Calculating the distance betweent two points<a class="headerlink" href="#task-3-calculating-the-distance-betweent-two-points" title="Permalink to this heading">#</a></h2>
-<p>Write a function called <code class="docutils literal notranslate"><span class="pre">calculate_distance</span></code> that takes in two coordinates as lists(<code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code>) and returns the distance between the two points.</p>
-<p>Use the information in the following docstring to write your funtion:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_distance</span><span class="p">(</span><span class="n">coord1</span><span class="p">,</span> <span class="n">coord2</span><span class="p">):</span>
-<span class="w">   </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">   Calculate the distance between two 3D coordinates.</span>
-<span class="sd">  </span>
-<span class="sd">   Parameters</span>
-<span class="sd">   ----------</span>
-<span class="sd">   coord1, coord2: list</span>
-<span class="sd">       The atomic coordinates</span>
-<span class="sd">   </span>
-<span class="sd">   Returns</span>
-<span class="sd">   -------</span>
-<span class="sd">   distance: float</span>
-<span class="sd">       The distance between the two points.</span>
-<span class="sd">   &quot;&quot;&quot;</span>
-</pre></div>
-</div>
-<p>After writing your function, include a few test cases “sanity checks” to ensure that your function is behaving correctly.</p>
-<div class="warning admonition">
-<p class="admonition-title">The distance function</p>
-<p>You cannot use a predefined distance function like <code class="docutils literal notranslate"><span class="pre">math.dist</span></code>
-for this task.</p>
-</div>
-<p>In your submission, include a markdown cell that contains a reflection (at least five sentences) on your approach and observations.</p>
+<section id="turning-in-this-assignment">
+<h2>Turning in this Assignment<a class="headerlink" href="#turning-in-this-assignment" title="Permalink to this heading">#</a></h2>
+<p>You should turn in links to your Pull Request and your Pull Request Review on bCourses like usual!</p>
 </section>
 </section>
 
@@ -537,20 +533,20 @@ for this task.</p>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="02-LJ-eqn.html"
+       href="02-computational-tricks.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">The Lennard Jones Equation</p>
+        <p class="prev-next-title">Cut-offs and Periodic Boundaries</p>
       </div>
     </a>
     <a class="right-next"
-       href="../day3.html"
+       href="../individual-assignments/01-07-individualhw.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Day 3</p>
+        <p class="prev-next-title">Individual Homework Assignment #1</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -572,16 +568,20 @@ for this task.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-alternate-initial-configuration-random-points">Task 1 - Alternate Initial Configuration - Random Points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-alternate-initial-configuration-cubic-lattice">Task 2 - Alternate Initial Configuration - Cubic Lattice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-3-tail-correction">Task 3 - Tail Correction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-4-periodic-boundaries-most-difficult">Task 4 - Periodic boundaries (most difficult)</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reviewing-your-teammate-s-change">Reviewing your teammate’s change</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-systematic-investigation-of-error-in-monte-carlo-calculation">Task 1 - Systematic Investigation of Error in Monte Carlo Calculation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-investigating-the-lennard-jones-equation">Task 2 - Investigating the Lennard Jones Equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-3-calculating-the-distance-betweent-two-points">Task 3 - Calculating the distance betweent two points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turning-in-this-assignment">Turning in this Assignment</a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
-    <a href="../_sources/day2/group-assignment.md.txt">
+    <a href="../_sources/day3/group-assignment.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

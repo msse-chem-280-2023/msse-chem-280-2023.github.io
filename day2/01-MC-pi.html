@@ -166,12 +166,27 @@
                     </li>
                 
 
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../day3.html">
+                        Day 3
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
                 <li class="nav-item">
                   <a class="nav-link nav-external" href="https://msse.berkeley.edu/">
                     MSSE
                   </a>
                 </li>
                 
+                </div>
+            </div>
+            
   </ul>
 </nav></div>
       
@@ -298,12 +313,27 @@ document.write(`
                     </li>
                 
 
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../day3.html">
+                        Day 3
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
                 <li class="nav-item">
                   <a class="nav-link nav-external" href="https://msse.berkeley.edu/">
                     MSSE
                   </a>
                 </li>
                 
+                </div>
+            </div>
+            
   </ul>
 </nav></div>
         
@@ -626,7 +656,7 @@ PYTHON</label><div class="sd-tab-content docutils">
 </div>
 </div>
 <p>An example output is shown below:</p>
-<img alt="fig/100points_pi.png" class="align-center" src="fig/100points_pi.png" />
+<img alt="../_images/100points_pi.png" class="align-center" src="../_images/100points_pi.png" />
 <section id="improving-the-visualization">
 <h3>Improving the visualization<a class="headerlink" href="#improving-the-visualization" title="Permalink to this heading">#</a></h3>
 <p>We can add a circle to our visualization so that we can see the boundary of the unit circle</p>
@@ -645,7 +675,7 @@ PYTHON</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-<img alt="fig/100points_pi_circle.png" class="align-center" src="fig/100points_pi_circle.png" />
+<img alt="../_images/100points_pi_circle.png" class="align-center" src="../_images/100points_pi_circle.png" />
 </section>
 </section>
 <section id="monte-carlo-in-more-detail">
@@ -653,8 +683,8 @@ PYTHON</label><div class="sd-tab-content docutils">
 <p>Monte Carlo methods are numerical techniques
 frequently used to estimate complex multidimensional integrals which otherwise could not be performed. The idea of Monte Carlo integration is to estimate the value of an integral by generating random points from the probability density.</p>
 <p>For instance, the integral of the function <span class="math notranslate nohighlight">\(f(\textbf{x})\)</span>, where <span class="math notranslate nohighlight">\(\textbf{x} \in \Re^{M}\)</span>, is approximated as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6c3f92be-70df-4ff2-a49a-82f922414c31">
-<span class="eqno">(1)<a class="headerlink" href="#equation-6c3f92be-70df-4ff2-a49a-82f922414c31" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8e7b868b-89ef-464a-bbc6-f207f4e15141">
+<span class="eqno">(1)<a class="headerlink" href="#equation-8e7b868b-89ef-464a-bbc6-f207f4e15141" title="Permalink to this equation">#</a></span>\[\begin{equation}
 	 I = \int_V f(\textbf{x}) \, d\textbf{x} = \int_V
 	 \frac{f(\textbf{x})}{h(\textbf{x})} h(\textbf{x}) \, d\textbf{x} 
 	 = \left&lt; \frac{f(\textbf{x})}{h(\textbf{x})} \right&gt;_{h(\textbf{x})}
@@ -668,14 +698,14 @@ generating random samples of <span class="math notranslate nohighlight">\(\textb
 distribution
 <span class="math notranslate nohighlight">\(h(\textbf{x})\)</span>. The simplest case is to uniformly generate <span class="math notranslate nohighlight">\(\textbf{x}\)</span>
 in the volume (<span class="math notranslate nohighlight">\(V\)</span>). In this way, <span class="math notranslate nohighlight">\(h(\textbf{x})\)</span> becomes constant as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e3f8e971-7271-4730-b9c6-88945ac905ac">
-<span class="eqno">(2)<a class="headerlink" href="#equation-e3f8e971-7271-4730-b9c6-88945ac905ac" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-acf18741-2f41-4588-b79c-845272dda20f">
+<span class="eqno">(2)<a class="headerlink" href="#equation-acf18741-2f41-4588-b79c-845272dda20f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 	h(\textbf{x}) = \frac{1}{V}
 	\label{eq.uniformDist}
 \end{equation}\]</div>
 <p>Using this sampling density <span class="math notranslate nohighlight">\(h(\textbf{x})\)</span>, the integral becomes</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5a76c7ca-f716-4887-a521-6fd5af5e2bef">
-<span class="eqno">(3)<a class="headerlink" href="#equation-5a76c7ca-f716-4887-a521-6fd5af5e2bef" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7c58a4ea-1553-42df-bfde-a3d0989f3a8b">
+<span class="eqno">(3)<a class="headerlink" href="#equation-7c58a4ea-1553-42df-bfde-a3d0989f3a8b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 	I = \int_V f(\textbf{x}) \, d\textbf{x} \approx \frac{V}{N} \sum_{i=1}^N
 	f(\textbf{x}_i)
 	\label{eq.averageUniform}

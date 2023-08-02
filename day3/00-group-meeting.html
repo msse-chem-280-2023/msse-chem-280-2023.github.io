@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Day 2 - Group Assignment &#8212; UC Berkeley Chem 280  documentation</title>
+    <title>Python Warm Up &amp; Returning to the LJ Equation &#8212; UC Berkeley Chem 280  documentation</title>
   
   
   
@@ -49,13 +49,9 @@
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'day2/group-assignment';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'day3/00-group-meeting';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Day 3" href="../day3.html" />
-    <link rel="prev" title="The Lennard Jones Equation" href="02-LJ-eqn.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -159,7 +155,7 @@
                     </li>
                 
 
-                    <li class="nav-item current active">
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../day2.html">
                         Day 2
                       </a>
@@ -274,7 +270,7 @@ document.write(`
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -306,7 +302,7 @@ document.write(`
                     </li>
                 
 
-                    <li class="nav-item current active">
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../day2.html">
                         Day 2
                       </a>
@@ -386,22 +382,6 @@ document.write(`
     
   </div>
   
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
-     aria-label="Section Navigation">
-  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="00-group-meeting.html">Meet your group</a></li>
-<li class="toctree-l1"><a class="reference internal" href="01-MC-pi.html">Intro to Monte Carlo Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02-LJ-eqn.html">The Lennard Jones Equation</a></li>
-</ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Day 2 - Group Assignment</a></li>
-</ul>
-</div>
-</nav></div>
-    </div>
-  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
@@ -434,10 +414,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    
-    <li class="breadcrumb-item"><a href="../day2.html" class="nav-link">Day 2</a></li>
-    
-    <li class="breadcrumb-item active" aria-current="page">Day 2 - Group Assignment</li>
+    <li class="breadcrumb-item active" aria-current="page">Python Warm Up &amp; Returning to the LJ Equation</li>
   </ul>
 </nav>
 </div>
@@ -454,74 +431,23 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="day-2-group-assignment">
-<h1>Day 2 - Group Assignment<a class="headerlink" href="#day-2-group-assignment" title="Permalink to this heading">#</a></h1>
-<p>Day 2 contains four possible homework tasks.
-Divide the tasks up among your team members.
-Each person should complete one task for homework and review the task of at least one teammate.</p>
-<p>For each task, create a jupyter notebook with a file name of the format <code class="docutils literal notranslate"><span class="pre">lastname_firstname_task_x.ipynb</span></code> where <code class="docutils literal notranslate"><span class="pre">x</span></code> is your task number.</p>
-<section id="reviewing-your-teammate-s-change">
-<h2>Reviewing your teammate’s change<a class="headerlink" href="#reviewing-your-teammate-s-change" title="Permalink to this heading">#</a></h2>
-<p>You may need too pull the changes from your teammate’s branch when you are reviewing their pull request. You can pull their branch to your local computer by doing</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-0">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>switch<span class="w"> </span>main
-git<span class="w"> </span>fetch<span class="w"> </span>
-git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>TEAMMATE_BRANCH<span class="w"> </span>--track<span class="w"> </span>origin/TEAMMATE_BRANCH
-</pre></div>
-</div>
-</div>
-</div>
-<p>You should then be able to see your teammates files. You should open their Jupyter notebook and review their code. If any changes are needed, leave this in your review on GitHub.</p>
-</section>
-<section id="task-1-systematic-investigation-of-error-in-monte-carlo-calculation">
-<h2>Task 1 - Systematic Investigation of Error in Monte Carlo Calculation<a class="headerlink" href="#task-1-systematic-investigation-of-error-in-monte-carlo-calculation" title="Permalink to this heading">#</a></h2>
-<p>For this task, you will return to your notebook where we calculated the value of <span class="math notranslate nohighlight">\(\pi\)</span> using Monte Carlo Methods.</p>
-<p>Your task is to investigate the effect of increasing the number of samples on the error of the calculation.</p>
-<p>Modify your Monte Carlo code to print the percent error in your pi calculation for <code class="docutils literal notranslate"><span class="pre">10</span></code>, <code class="docutils literal notranslate"><span class="pre">100</span></code>, <code class="docutils literal notranslate"><span class="pre">1000</span></code>, <code class="docutils literal notranslate"><span class="pre">10,000</span></code>, <code class="docutils literal notranslate"><span class="pre">100,000</span></code>, and <code class="docutils literal notranslate"><span class="pre">1,000,000</span></code> points. For an extra challenge, try visualizing your results using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="python-warm-up-returning-to-the-lj-equation">
+<h1>Python Warm Up &amp; Returning to the LJ Equation<a class="headerlink" href="#python-warm-up-returning-to-the-lj-equation" title="Permalink to this heading">#</a></h1>
+<p>To start class today, we will spend about half an hour reviewing Python concepts, and another half hour working with the Lennard Jones equation.</p>
+<section id="python-review">
+<h2>Python Review<a class="headerlink" href="#python-review" title="Permalink to this heading">#</a></h2>
 <div class="tip admonition">
-<p class="admonition-title">Reference Values</p>
-<p>You can use <code class="docutils literal notranslate"><span class="pre">math.pi</span></code> as a reference value and <code class="docutils literal notranslate"><span class="pre">math.fabs</span></code> to get an absolute value when calculating your percent error.</p>
+<p class="admonition-title">The interactive Python interpreter</p>
+<p>In the article linked below, you will occassionally see Python blocks where lines begin with three greater-than symbols, <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code>.
+This denotes execution of code in the <em>interactive Python interpreter</em>.
+You can enter the <em>interactive Python interpreter</em> by typing <code class="docutils literal notranslate"><span class="pre">python</span></code> into your terminal.
+You will be using a Python version that matches the version installed in your environment.</p>
+<p>To use the interactive Python interpreter, you type Python code following <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> and press the <code class="docutils literal notranslate"><span class="pre">Enter</span> <span class="pre">key.</span></code></p>
 </div>
-<p>In your submission, include a markdown cell that contains a reflection (at least five sentences) on your approach and observations.</p>
-</section>
-<section id="task-2-investigating-the-lennard-jones-equation">
-<h2>Task 2 - Investigating the Lennard Jones Equation<a class="headerlink" href="#task-2-investigating-the-lennard-jones-equation" title="Permalink to this heading">#</a></h2>
-<p>Write a <code class="docutils literal notranslate"><span class="pre">calculate_LJ</span></code> function that includes parameters for setting <span class="math notranslate nohighlight">\(\sigma\)</span> and <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
-<p>After writing the function, perform a set of calculations with <span class="math notranslate nohighlight">\(\sigma\)</span> and <span class="math notranslate nohighlight">\(\epsilon\)</span> both equal to one. Using these values, calculate the Lennard Jones potential energy for a range of distances, r, from r = 0.1 to r = 5 in increments of 0.1. Save your results in a list.</p>
-<p>Next, perform a set of calculations where <span class="math notranslate nohighlight">\(\sigma\)</span> is equal to 2 and <span class="math notranslate nohighlight">\(\epsilon\)</span> is equal to one. Then set <span class="math notranslate nohighlight">\(\sigma\)</span> equal to 1 and <span class="math notranslate nohighlight">\(\epsilon\)</span> equal to two. For each set of calculations, save your result in a list.</p>
-<p>Visualize all three results on a graph using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p>
-<p>In your submission, include a markdown cell that contains a reflection (at least five sentences) on your approach and observations.</p>
-</section>
-<section id="task-3-calculating-the-distance-betweent-two-points">
-<h2>Task 3 - Calculating the distance betweent two points<a class="headerlink" href="#task-3-calculating-the-distance-betweent-two-points" title="Permalink to this heading">#</a></h2>
-<p>Write a function called <code class="docutils literal notranslate"><span class="pre">calculate_distance</span></code> that takes in two coordinates as lists(<code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code>) and returns the distance between the two points.</p>
-<p>Use the information in the following docstring to write your funtion:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_distance</span><span class="p">(</span><span class="n">coord1</span><span class="p">,</span> <span class="n">coord2</span><span class="p">):</span>
-<span class="w">   </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">   Calculate the distance between two 3D coordinates.</span>
-<span class="sd">  </span>
-<span class="sd">   Parameters</span>
-<span class="sd">   ----------</span>
-<span class="sd">   coord1, coord2: list</span>
-<span class="sd">       The atomic coordinates</span>
-<span class="sd">   </span>
-<span class="sd">   Returns</span>
-<span class="sd">   -------</span>
-<span class="sd">   distance: float</span>
-<span class="sd">       The distance between the two points.</span>
-<span class="sd">   &quot;&quot;&quot;</span>
-</pre></div>
-</div>
-<p>After writing your function, include a few test cases “sanity checks” to ensure that your function is behaving correctly.</p>
-<div class="warning admonition">
-<p class="admonition-title">The distance function</p>
-<p>You cannot use a predefined distance function like <code class="docutils literal notranslate"><span class="pre">math.dist</span></code>
-for this task.</p>
-</div>
-<p>In your submission, include a markdown cell that contains a reflection (at least five sentences) on your approach and observations.</p>
+<p>Read this article from <a class="reference external" href="https://realpython.com/defining-your-own-python-function/">Real Python about functions</a>.
+Start at the beginning of the article, and read through “The <code class="docutils literal notranslate"><span class="pre">return</span></code> Statement”.
+After you have read the article, take the Day 3 Opening Quiz on bCourses.
+You should plan to read the article and take the quiz within 30 minutes.</p>
 </section>
 </section>
 
@@ -536,24 +462,6 @@ for this task.</p>
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="02-LJ-eqn.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">The Lennard Jones Equation</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../day3.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Day 3</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -572,16 +480,13 @@ for this task.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reviewing-your-teammate-s-change">Reviewing your teammate’s change</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-systematic-investigation-of-error-in-monte-carlo-calculation">Task 1 - Systematic Investigation of Error in Monte Carlo Calculation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-investigating-the-lennard-jones-equation">Task 2 - Investigating the Lennard Jones Equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-3-calculating-the-distance-betweent-two-points">Task 3 - Calculating the distance betweent two points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-review">Python Review</a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
-    <a href="../_sources/day2/group-assignment.md.txt">
+    <a href="../_sources/day3/00-group-meeting.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
