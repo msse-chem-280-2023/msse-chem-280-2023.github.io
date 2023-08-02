@@ -54,6 +54,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'day3/01-LJ-system';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cut-offs and Periodic Boundaries" href="02-computational-tricks.html" />
+    <link rel="prev" title="Python Warm Up &amp; Returning to the LJ Equation" href="00-group-meeting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,7 +166,7 @@
                     </li>
                 
 
-                    <li class="nav-item">
+                    <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../day3.html">
                         Day 3
                       </a>
@@ -272,7 +274,7 @@ document.write(`
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -311,7 +313,7 @@ document.write(`
                     </li>
                 
 
-                    <li class="nav-item">
+                    <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../day3.html">
                         Day 3
                       </a>
@@ -384,6 +386,23 @@ document.write(`
     
   </div>
   
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00-group-meeting.html">Python Warm Up &amp; Returning to the LJ Equation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lennard Jones Energy of Atomic System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-computational-tricks.html">Cut-offs and Periodic Boundaries</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../individual-assignments/01-07-individualhw.html">Individual Homework Assignment #1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="group-assignment.html">Group Homework Assignment Day 3</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
@@ -416,6 +435,9 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
+    
+    <li class="breadcrumb-item"><a href="../day3.html" class="nav-link">Day 3</a></li>
+    
     <li class="breadcrumb-item active" aria-current="page">Lennard Jones Energy of Atomic System</li>
   </ul>
 </nav>
@@ -590,8 +612,9 @@ PYTHON</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
+</section>
 <section id="sanity-checks">
-<h4>Sanity Checks<a class="headerlink" href="#sanity-checks" title="Permalink to this heading">#</a></h4>
+<h3>Sanity Checks<a class="headerlink" href="#sanity-checks" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Check that function has expected number of coordinates.</p></li>
 <li><p>Check that first line, last line is as expected.</p></li>
@@ -618,7 +641,6 @@ PYTHON</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-</section>
 </section>
 <section id="pairwise-lj-energy-for-nist-system">
 <h3>Pairwise LJ energy for NIST system<a class="headerlink" href="#pairwise-lj-energy-for-nist-system" title="Permalink to this heading">#</a></h3>
@@ -663,6 +685,24 @@ AssertionError:
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="00-group-meeting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Python Warm Up &amp; Returning to the LJ Equation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02-computational-tricks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Cut-offs and Periodic Boundaries</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -682,10 +722,8 @@ AssertionError:
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-total-pairwise-lj-energy">Calculating the total pairwise LJ energy</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-coordinates-from-nist-file">Reading coordinates from NIST file</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sanity-checks">Sanity Checks</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-coordinates-from-nist-file">Reading coordinates from NIST file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sanity-checks">Sanity Checks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pairwise-lj-energy-for-nist-system">Pairwise LJ energy for NIST system</a></li>
 </ul>
 </li>
