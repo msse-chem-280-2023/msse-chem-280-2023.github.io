@@ -488,7 +488,9 @@ If they exit through one side of the box, they reappear on the other.</p>
 <section id="task-1-alternate-initial-configuration-random-points">
 <h2>Task 1 - Alternate Initial Configuration - Random Points<a class="headerlink" href="#task-1-alternate-initial-configuration-random-points" title="Permalink to this heading">#</a></h2>
 <p>So far we have only used an initial configuration from a file. For this task, you will write a function which can generate initial system configurations from a number of particles and a desired system density. Make sure your function includes docstrings!</p>
-<p>Write a function that makes a configuration by randomly placing points in a 3 dimensional box. The function should return coordinates, box_length the same way our `read_xyz`` function does so we can switch out the two without changing our code.</p>
+<p>For density, use the number density. For example, in our sample configuration from NIST, the density is 0.8. This is calculated by dividing the number of atoms by the box volume - 800 atoms / (10 * 10 * 10), since 10 was our box length.
+You will need to calculate a box length depending on the number of atoms and the desired density.</p>
+<p>Write a function that makes a configuration by randomly placing points in a 3 dimensional box. The function should return <code class="docutils literal notranslate"><span class="pre">coordinates``,</span> </code>box_length<code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">same</span> <span class="pre">way</span> <span class="pre">our</span></code>read_xyz` function does so we can switch out the two without changing our code.</p>
 </section>
 <section id="task-2-alternate-initial-configuration-cubic-lattice">
 <h2>Task 2 - Alternate Initial Configuration - Cubic Lattice<a class="headerlink" href="#task-2-alternate-initial-configuration-cubic-lattice" title="Permalink to this heading">#</a></h2>
