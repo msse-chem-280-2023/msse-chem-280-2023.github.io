@@ -189,6 +189,13 @@
                   </a>
                 </li>
                 
+
+                <li class="nav-item">
+                  <a class="nav-link nav-external" href="https://msse-chem-280-2023.github.io/git-cheat-sheet/">
+                    Git Cheat Sheet
+                  </a>
+                </li>
+                
                 </div>
             </div>
             
@@ -340,6 +347,13 @@ document.write(`
                 <li class="nav-item">
                   <a class="nav-link nav-external" href="https://msse.berkeley.edu/">
                     MSSE
+                  </a>
+                </li>
+                
+
+                <li class="nav-item">
+                  <a class="nav-link nav-external" href="https://msse-chem-280-2023.github.io/git-cheat-sheet/">
+                    Git Cheat Sheet
                   </a>
                 </li>
                 
@@ -600,6 +614,24 @@ PYTHON</label><div class="sd-tab-content docutils">
 </div>
 <p>In the class <a class="reference external" href="https://docs.google.com/document/d/1Bs5K45Y9uPrfE1XoGYgawg4_oA9DGKwAGTD_-KCbe0Y/edit?usp=sharing">Google Doc</a> write an explanation of changes to our <code class="docutils literal notranslate"><span class="pre">calculate_distance</span></code> function and our <code class="docutils literal notranslate"><span class="pre">calculate_total_energy</span></code> function under the section “Code Difference Explanation” at the end of the document.
 Add a header with your group name over your explanation.</p>
+<p>If you need a <code class="docutils literal notranslate"><span class="pre">calculate_tail_correction</span></code> function, use this one:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-1" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-python" for="sd-tab-item-1">
+PYTHON</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_tail_correction</span><span class="p">(</span><span class="n">num_particles</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the long range tail correction</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">const1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">num_particles</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">box_length</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">const2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">cutoff</span><span class="p">)</span> <span class="o">**</span> <span class="mi">9</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">cutoff</span><span class="p">)</span> <span class="o">**</span> <span class="mi">3</span>
+
+    <span class="k">return</span> <span class="n">const1</span> <span class="o">*</span> <span class="n">const2</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
