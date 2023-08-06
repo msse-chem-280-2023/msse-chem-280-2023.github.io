@@ -551,109 +551,76 @@ When you are done, your file might look something like the following (this code 
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" data-sync-id="tabcode-python" for="sd-tab-item-0">
 PYTHON</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Functions for running a Monte Carlo Simulation</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
-<span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">os</span>
 
 <span class="k">def</span> <span class="nf">calculate_LJ</span><span class="p">(</span><span class="n">r_ij</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    The LJ interaction energy between two particles.</span>
-<span class="sd">    </span>
-<span class="sd">    Computes the pairwise Lennard Jones interaction energy based on the separation distance in reduced units.</span>
-<span class="sd">    </span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    r_ij : float</span>
-<span class="sd">        The distance between the particles in reduced units.</span>
-<span class="sd">        </span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    pairwise_energy : float</span>
-<span class="sd">        The pairwise Lennard Jones interaction energy in reduced units.</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    
     <span class="n">r6_term</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">r_ij</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
     <span class="n">r12_term</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">r6_term</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    
     <span class="n">pairwise_energy</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">r12_term</span> <span class="o">-</span> <span class="n">r6_term</span><span class="p">)</span>
-    
     <span class="k">return</span> <span class="n">pairwise_energy</span>
+
 
 <span class="k">def</span> <span class="nf">calculate_distance</span><span class="p">(</span><span class="n">coord1</span><span class="p">,</span> <span class="n">coord2</span><span class="p">,</span> <span class="n">box_length</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the distance between two 3D coordinates.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    coord1, coord2: list</span>
 <span class="sd">        The atomic coordinates</span>
-<span class="sd">    </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    distance: float</span>
 <span class="sd">        The distance between the two points.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">distance</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-        <span class="n">dim_dist</span> <span class="o">=</span> <span class="p">(</span><span class="n">coord1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">coord2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> 
-        
+        <span class="n">dim_dist</span> <span class="o">=</span> <span class="n">coord1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">coord2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
         <span class="k">if</span> <span class="n">box_length</span><span class="p">:</span>
             <span class="n">dim_dist</span> <span class="o">=</span> <span class="n">dim_dist</span> <span class="o">-</span> <span class="n">box_length</span> <span class="o">*</span> <span class="nb">round</span><span class="p">(</span><span class="n">dim_dist</span> <span class="o">/</span> <span class="n">box_length</span><span class="p">)</span>
-        
+
         <span class="n">dim_dist</span> <span class="o">=</span> <span class="n">dim_dist</span><span class="o">**</span><span class="mi">2</span>
         <span class="n">distance</span> <span class="o">+=</span> <span class="n">dim_dist</span>
-    
+
     <span class="n">distance</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">distance</span>
-
-<span class="k">def</span> <span class="nf">calculate_tail_correction</span><span class="p">(</span><span class="n">num_particles</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculate the long range tail correction</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     
-    <span class="n">const1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">num_particles</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">box_length</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="n">const2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">cutoff</span><span class="p">)</span><span class="o">**</span><span class="mi">9</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">cutoff</span><span class="p">)</span> <span class="o">**</span><span class="mi">3</span>
-    
-    <span class="k">return</span> <span class="n">const1</span> <span class="o">*</span> <span class="n">const2</span>
-
 <span class="k">def</span> <span class="nf">calculate_total_energy</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the total Lennard Jones energy of a system of particles.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    coordinates : list</span>
 <span class="sd">        Nested list containing particle coordinates.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    total_energy : float</span>
 <span class="sd">        The total pairwise Lennard Jones energy of the system of particles.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">total_energy</span> <span class="o">=</span> <span class="mi">0</span>
-    
+
     <span class="n">num_atoms</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
-    
+
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_atoms</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_atoms</span><span class="p">):</span>
-            
-            <span class="c1">#print(f&#39;Comparings atom number {i} with atom number {j}&#39;)</span>
-            
-            <span class="n">dist_ij</span> <span class="o">=</span> <span class="n">calculate_distance</span><span class="p">(</span><span class="n">coordinates</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">coordinates</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">box_length</span><span class="o">=</span><span class="n">box_length</span><span class="p">)</span>
-            
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_atoms</span><span class="p">):</span>
+
+            <span class="n">dist_ij</span> <span class="o">=</span> <span class="n">calculate_distance</span><span class="p">(</span>
+                <span class="n">coordinates</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">coordinates</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">box_length</span><span class="o">=</span><span class="n">box_length</span>
+            <span class="p">)</span>
+
             <span class="k">if</span> <span class="n">dist_ij</span> <span class="o">&lt;</span> <span class="n">cutoff</span><span class="p">:</span>
                 <span class="n">interaction_energy</span> <span class="o">=</span> <span class="n">calculate_LJ</span><span class="p">(</span><span class="n">dist_ij</span><span class="p">)</span>
                 <span class="n">total_energy</span> <span class="o">+=</span> <span class="n">interaction_energy</span>
-            
+
     <span class="k">return</span> <span class="n">total_energy</span>
-    
+
 <span class="k">def</span> <span class="nf">read_xyz</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Reads coordinates from an xyz file.</span>
@@ -667,6 +634,7 @@ PYTHON</label><div class="sd-tab-content docutils">
 <span class="sd">    -------</span>
 <span class="sd">    atomic_coordinates : list</span>
 <span class="sd">        A two dimensional list containing atomic coordinates</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -690,132 +658,149 @@ PYTHON</label><div class="sd-tab-content docutils">
     
     <span class="k">return</span> <span class="n">atomic_coordinates</span><span class="p">,</span> <span class="n">box_length</span>
 
+<span class="k">def</span> <span class="nf">calculate_tail_correction</span><span class="p">(</span><span class="n">num_particles</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the long range tail correction</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">const1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">num_particles</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">box_length</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">const2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">cutoff</span><span class="p">)</span> <span class="o">**</span> <span class="mi">9</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">cutoff</span><span class="p">)</span> <span class="o">**</span> <span class="mi">3</span>
+
+    <span class="k">return</span> <span class="n">const1</span> <span class="o">*</span> <span class="n">const2</span>
+
 <span class="k">def</span> <span class="nf">accept_or_reject</span><span class="p">(</span><span class="n">delta_e</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Accept or reject based on change in energy and temperature.</span>
+<span class="sd">    Accept or reject a move based on the Metropolis criterion.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    delta_e : float</span>
+<span class="sd">        The change in energy resulting from a particle movement.</span>
+<span class="sd">    beta : float</span>
+<span class="sd">        The inverse of the system temperature.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    accept : bool</span>
+<span class="sd">        Whether to accept the move.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="k">if</span> <span class="n">delta_e</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">accept</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">random_number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
         <span class="n">p_acc</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">beta</span><span class="o">*</span><span class="n">delta_e</span><span class="p">)</span>
-        
+
         <span class="k">if</span> <span class="n">random_number</span> <span class="o">&lt;</span> <span class="n">p_acc</span><span class="p">:</span>
             <span class="n">accept</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">accept</span> <span class="o">=</span> <span class="kc">False</span>
-    
+
     <span class="k">return</span> <span class="n">accept</span>
 
 <span class="k">def</span> <span class="nf">calculate_pair_energy</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">i_particle</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculate the interaction energy of a particle with its environment (all other particles in the system)</span>
-<span class="sd">    </span>
+<span class="sd">    Calculate the interaction energy of a particle with its environment (all other particles in the system).</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    coordinates : list</span>
-<span class="sd">        The coordinates for all the particles in the system.</span>
-<span class="sd">        </span>
-<span class="sd">    i_particle : int</span>
-<span class="sd">        The particle index for which to calculate the energy.</span>
+<span class="sd">        The coordinates for all particles in the system.</span>
 <span class="sd">    </span>
-<span class="sd">    box_length : float</span>
-<span class="sd">        The length of the simulation box.</span>
+<span class="sd">    i_particle : int</span>
+<span class="sd">        The particle number for which to calculate the energy.</span>
 <span class="sd">    </span>
 <span class="sd">    cutoff : float</span>
-<span class="sd">        The simulation cutoff. Beyond this distance, interactions are not calculated</span>
+<span class="sd">        The simulation cutoff. Beyond this distance, interaction energies are not calculated.</span>
 <span class="sd">    </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    e_total : float</span>
-<span class="sd">        The pairwise interaction energy of the i-th particle with all other particles in the system.</span>
-<span class="sd">    </span>
+<span class="sd">        The pairwise interaction energy of the i_th particle with all other particles.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="n">e_total</span> <span class="o">=</span> <span class="mi">0</span>
-    
     <span class="n">i_position</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="n">i_particle</span><span class="p">]</span>
-    
     <span class="n">num_atoms</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
     
     <span class="k">for</span> <span class="n">j_particle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_atoms</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">i_particle</span> <span class="o">!=</span> <span class="n">j_particle</span><span class="p">:</span>
             <span class="n">j_position</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="n">j_particle</span><span class="p">]</span>
             <span class="n">rij</span> <span class="o">=</span> <span class="n">calculate_distance</span><span class="p">(</span><span class="n">i_position</span><span class="p">,</span> <span class="n">j_position</span><span class="p">,</span> <span class="n">box_length</span><span class="p">)</span>
-
+    
             <span class="k">if</span> <span class="n">rij</span> <span class="o">&lt;</span> <span class="n">cutoff</span><span class="p">:</span>
                 <span class="n">e_pair</span> <span class="o">=</span> <span class="n">calculate_LJ</span><span class="p">(</span><span class="n">rij</span><span class="p">)</span>
                 <span class="n">e_total</span> <span class="o">+=</span> <span class="n">e_pair</span>
     
     <span class="k">return</span> <span class="n">e_total</span>
-
-<span class="c1"># Set simulation parameters</span>
-<span class="n">reduced_temperature</span> <span class="o">=</span> <span class="mf">1.5</span>
-<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">50000</span>
-<span class="n">max_displacement</span> <span class="o">=</span> <span class="mf">0.1</span> 
-<span class="n">cutoff</span> <span class="o">=</span> <span class="mi">3</span>
-
-<span class="c1"># Reporting information</span>
+        
+</pre></div>
+</div>
+</div>
+</div>
+<p>Put your simulation loop in a second cell:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-1" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-python" for="sd-tab-item-1">
+PYTHON</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulation Parameters</span>
+<span class="n">reduced_temperature</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">num_moves</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">max_displacement</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">cutoff</span> <span class="o">=</span> <span class="mf">3.0</span>
 <span class="n">freq</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">steps</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">energies</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">all_coordinates</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># Calculated quantities</span>
-<span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">reduced_temperature</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">reduced_temperature</span>
 
-<span class="c1"># Read initial coordinates</span>
-<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;../data/sample_config1.txt&quot;</span>
-<span class="n">coordinates</span><span class="p">,</span> <span class="n">box_length</span> <span class="o">=</span> <span class="n">read_xyz</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+<span class="c1"># Define initial coordinates</span>
+<span class="n">coordinates</span><span class="p">,</span> <span class="n">box_length</span> <span class="o">=</span> <span class="n">read_xyz</span><span class="p">(</span><span class="s2">&quot;../data/sample_config1.txt&quot;</span><span class="p">)</span>
 <span class="n">num_particles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
 
-<span class="c1"># Calculated based on simulation inputs</span>
+<span class="c1"># Set up energy</span>
+<span class="n">delta_energy</span> <span class="o">=</span> <span class="mi">0</span>
+
 <span class="n">total_energy</span> <span class="o">=</span> <span class="n">calculate_total_energy</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">)</span>
 <span class="n">total_energy</span> <span class="o">+=</span> <span class="n">calculate_tail_correction</span><span class="p">(</span><span class="n">num_particles</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
-    
-    <span class="c1"># 1. Randomly pick one of num_particles particles</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The starting energy is </span><span class="si">{</span><span class="n">total_energy</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Monte Carlo Simulation Loop</span>
+
+<span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_moves</span><span class="p">):</span>
+    <span class="c1"># 1. Randomly pick one of N particles.</span>
     <span class="n">random_particle</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="n">num_particles</span><span class="p">)</span>
     
-    <span class="c1"># 2. Calculate the interaction energy of the selected particle with the system. Store this value.</span>
+    <span class="c1"># 2. Calculate the interaction energy of the selected particle with the system, and store this value.</span>
     <span class="n">current_energy</span> <span class="o">=</span> <span class="n">calculate_pair_energy</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">random_particle</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">)</span>
     
-    <span class="c1"># 3. Generate a random x, y, z displacement range (-max_displacement, max_displacement) - uniform distribution</span>
+    <span class="c1"># 3. Generate a random x, y, z displacement within max_displacement.</span>
     <span class="n">x_rand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">max_displacement</span><span class="p">,</span> <span class="n">max_displacement</span><span class="p">)</span>
     <span class="n">y_rand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">max_displacement</span><span class="p">,</span> <span class="n">max_displacement</span><span class="p">)</span>
     <span class="n">z_rand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">max_displacement</span><span class="p">,</span> <span class="n">max_displacement</span><span class="p">)</span>
     
-    <span class="c1"># 4. Modify the coordinate of selected particle by generated displacements.</span>
+    <span class="c1"># 4. Modify the coordinate of the selected particle by the generated displacements.</span>
     <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">x_rand</span>
     <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">y_rand</span>
     <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">z_rand</span>
     
-    <span class="c1"># 5. Calculate the new interaction energy of moved particle, store this value.</span>
+    <span class="c1"># 5. Calculate the interaction energy of the moved particle with the system, and store this value.</span>
     <span class="n">proposed_energy</span> <span class="o">=</span> <span class="n">calculate_pair_energy</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">random_particle</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">)</span>
+    <span class="n">energy_difference</span> <span class="o">=</span> <span class="n">proposed_energy</span> <span class="o">-</span> <span class="n">current_energy</span>
     
-    <span class="c1"># 6. Calculate energy change and decide if we accept the move.</span>
-    <span class="n">delta_energy</span> <span class="o">=</span> <span class="n">proposed_energy</span> <span class="o">-</span> <span class="n">current_energy</span>
+    <span class="c1"># 6. Based on the energy difference, decide to accept or reject the movement.</span>
+    <span class="n">accept</span> <span class="o">=</span> <span class="n">accept_or_reject</span><span class="p">(</span><span class="n">energy_difference</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
     
-    <span class="n">accept</span> <span class="o">=</span> <span class="n">accept_or_reject</span><span class="p">(</span><span class="n">delta_energy</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
-    
-    <span class="c1"># 7. If accept, keep movement. If not revert to old position.</span>
+    <span class="c1"># 7. If we accept, move the particle.</span>
     <span class="k">if</span> <span class="n">accept</span><span class="p">:</span>
-        <span class="n">total_energy</span> <span class="o">+=</span> <span class="n">delta_energy</span>
+        <span class="n">total_energy</span> <span class="o">+=</span> <span class="n">energy_difference</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># Move is not accepted, roll back coordinates</span>
         <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">x_rand</span>
         <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">y_rand</span>
         <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">-=</span> <span class="n">z_rand</span>
-    
-    <span class="c1"># 8. Print the energy and store the coordinates at certain intervals</span>
-    <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="n">freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">total_energy</span><span class="o">/</span><span class="n">num_particles</span><span class="p">)</span>
-        <span class="n">steps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
-        <span class="n">energies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total_energy</span><span class="o">/</span><span class="n">num_particles</span><span class="p">)</span>
-        <span class="n">all_coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">move</span> <span class="o">%</span> <span class="n">freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">move</span><span class="p">,</span> <span class="n">total_energy</span><span class="o">/</span><span class="n">num_particles</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -823,8 +808,8 @@ PYTHON</label><div class="sd-tab-content docutils">
 <p>Note that we have moved all the imports to the top and also changed the location of our file path.
 If you have moved everything without problems, you should be able to run the simulation by typing the following command from your <code class="docutils literal notranslate"><span class="pre">day5</span></code> folder.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-1" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-1">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-2">
 SHELL</label><div class="sd-tab-content docutils">
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>monte_carlo_yourname.py
 </pre></div>
@@ -838,95 +823,155 @@ For this function, we want to consider what are input simulation parameters.
 In other words, if we want to run several simulations, what would we change? We will want to make these our function arguments.
 We will also modify our function to return a list of generated coordinates, so we can analyze them later.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-python" for="sd-tab-item-2">
+<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-python" for="sd-tab-item-3">
 PYTHON</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_simulation</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">reduced_temperature</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">,</span> <span class="n">max_displacement</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Run a Monte Carlo simulation with the specified parameters. </span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># Reporting information</span>
-    <span class="n">steps</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">energies</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">all_coordinates</span> <span class="o">=</span> <span class="p">[]</span>
-
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_simulation</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">reduced_temperature</span><span class="p">,</span> <span class="n">num_moves</span><span class="p">,</span> <span class="n">max_displacement</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
     <span class="c1"># Calculated quantities</span>
-    <span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">reduced_temperature</span>
-    <span class="n">num_particles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">reduced_temperature</span>
 
-    <span class="c1"># Calculated based on simulation inputs</span>
+    <span class="n">num_particles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
+    
+    <span class="c1"># Set up energy</span>
+    <span class="n">delta_energy</span> <span class="o">=</span> <span class="mi">0</span>
+    
     <span class="n">total_energy</span> <span class="o">=</span> <span class="n">calculate_total_energy</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">)</span>
     <span class="n">total_energy</span> <span class="o">+=</span> <span class="n">calculate_tail_correction</span><span class="p">(</span><span class="n">num_particles</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">)</span>
-
-
-    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
-        
-        <span class="c1"># 1. Randomly pick one of num_particles particles</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The starting energy is </span><span class="si">{</span><span class="n">total_energy</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Monte Carlo Simulation Loop</span>
+    
+    <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_moves</span><span class="p">):</span>
+        <span class="c1"># 1. Randomly pick one of N particles.</span>
         <span class="n">random_particle</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="n">num_particles</span><span class="p">)</span>
         
-        <span class="c1"># 2. Calculate the interaction energy of the selected particle with the system. Store this value.</span>
+        <span class="c1"># 2. Calculate the interaction energy of the selected particle with the system, and store this value.</span>
         <span class="n">current_energy</span> <span class="o">=</span> <span class="n">calculate_pair_energy</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">random_particle</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">)</span>
         
-        <span class="c1"># 3. Generate a random x, y, z displacement range (-max_displacement, max_displacement) - uniform distribution</span>
+        <span class="c1"># 3. Generate a random x, y, z displacement within max_displacement.</span>
         <span class="n">x_rand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">max_displacement</span><span class="p">,</span> <span class="n">max_displacement</span><span class="p">)</span>
         <span class="n">y_rand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">max_displacement</span><span class="p">,</span> <span class="n">max_displacement</span><span class="p">)</span>
         <span class="n">z_rand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">max_displacement</span><span class="p">,</span> <span class="n">max_displacement</span><span class="p">)</span>
         
-        <span class="c1"># 4. Modify the coordinate of selected particle by generated displacements.</span>
+        <span class="c1"># 4. Modify the coordinate of the selected particle by the generated displacements.</span>
         <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">x_rand</span>
         <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">y_rand</span>
         <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">z_rand</span>
         
-        <span class="c1"># 5. Calculate the new interaction energy of moved particle, store this value.</span>
+        <span class="c1"># 5. Calculate the interaction energy of the moved particle with the system, and store this value.</span>
         <span class="n">proposed_energy</span> <span class="o">=</span> <span class="n">calculate_pair_energy</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">random_particle</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">)</span>
+        <span class="n">energy_difference</span> <span class="o">=</span> <span class="n">proposed_energy</span> <span class="o">-</span> <span class="n">current_energy</span>
         
-        <span class="c1"># 6. Calculate energy change and decide if we accept the move.</span>
-        <span class="n">delta_energy</span> <span class="o">=</span> <span class="n">proposed_energy</span> <span class="o">-</span> <span class="n">current_energy</span>
+        <span class="c1"># 6. Based on the energy difference, decide to accept or reject the movement.</span>
+        <span class="n">accept</span> <span class="o">=</span> <span class="n">accept_or_reject</span><span class="p">(</span><span class="n">energy_difference</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
         
-        <span class="n">accept</span> <span class="o">=</span> <span class="n">accept_or_reject</span><span class="p">(</span><span class="n">delta_energy</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
-        
-        <span class="c1"># 7. If accept, keep movement. If not revert to old position.</span>
+        <span class="c1"># 7. If we accept, move the particle.</span>
         <span class="k">if</span> <span class="n">accept</span><span class="p">:</span>
-            <span class="n">total_energy</span> <span class="o">+=</span> <span class="n">delta_energy</span>
+            <span class="n">total_energy</span> <span class="o">+=</span> <span class="n">energy_difference</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># Move is not accepted, roll back coordinates</span>
             <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">x_rand</span>
             <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">y_rand</span>
             <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">-=</span> <span class="n">z_rand</span>
-        
-        <span class="c1"># 8. Print the energy and store the coordinates at certain intervals</span>
-        <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="n">freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">total_energy</span><span class="o">/</span><span class="n">num_particles</span><span class="p">)</span>
-            <span class="n">steps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
-            <span class="n">energies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total_energy</span><span class="o">/</span><span class="n">num_particles</span><span class="p">)</span>
-            <span class="n">all_coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
     
-    <span class="k">return</span> <span class="n">all_coordinates</span>
+        <span class="k">if</span> <span class="n">move</span> <span class="o">%</span> <span class="n">freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">move</span><span class="p">,</span> <span class="n">total_energy</span><span class="o">/</span><span class="n">num_particles</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Now we can try this out in another Python module Jupyter notebook.</p>
-<p>Create a Python module called <code class="docutils literal notranslate"><span class="pre">run_sim.py</span></code></p>
+<p>For a Monte Carlo simulation, we want to keep track of the coordinates so we can analyze them.
+We can add some additional statements to our functions under <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">move</span> <span class="pre">%</span> <span class="pre">freq</span></code> to keep the coordinates
+at specified snapshots, then we can return them at the end of the simulation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_simulation</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">reduced_temperature</span><span class="p">,</span> <span class="n">num_moves</span><span class="p">,</span> <span class="n">max_displacement</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="c1"># Calculated quantities</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">reduced_temperature</span>
+
+    <span class="n">num_particles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
+    
+    <span class="c1"># Set up energy</span>
+    <span class="n">delta_energy</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="n">total_energy</span> <span class="o">=</span> <span class="n">calculate_total_energy</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">)</span>
+    <span class="n">total_energy</span> <span class="o">+=</span> <span class="n">calculate_tail_correction</span><span class="p">(</span><span class="n">num_particles</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">)</span>
+
+    <span class="c1"># Create a list for coordinates</span>
+    <span class="n">all_coordinates</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The starting energy is </span><span class="si">{</span><span class="n">total_energy</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Monte Carlo Simulation Loop</span>
+    
+    <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_moves</span><span class="p">):</span>
+        <span class="c1"># 1. Randomly pick one of N particles.</span>
+        <span class="n">random_particle</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="n">num_particles</span><span class="p">)</span>
+        
+        <span class="c1"># 2. Calculate the interaction energy of the selected particle with the system, and store this value.</span>
+        <span class="n">current_energy</span> <span class="o">=</span> <span class="n">calculate_pair_energy</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">random_particle</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">)</span>
+        
+        <span class="c1"># 3. Generate a random x, y, z displacement within max_displacement.</span>
+        <span class="n">x_rand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">max_displacement</span><span class="p">,</span> <span class="n">max_displacement</span><span class="p">)</span>
+        <span class="n">y_rand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">max_displacement</span><span class="p">,</span> <span class="n">max_displacement</span><span class="p">)</span>
+        <span class="n">z_rand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">max_displacement</span><span class="p">,</span> <span class="n">max_displacement</span><span class="p">)</span>
+        
+        <span class="c1"># 4. Modify the coordinate of the selected particle by the generated displacements.</span>
+        <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">x_rand</span>
+        <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">y_rand</span>
+        <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">z_rand</span>
+        
+        <span class="c1"># 5. Calculate the interaction energy of the moved particle with the system, and store this value.</span>
+        <span class="n">proposed_energy</span> <span class="o">=</span> <span class="n">calculate_pair_energy</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">random_particle</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">)</span>
+        <span class="n">energy_difference</span> <span class="o">=</span> <span class="n">proposed_energy</span> <span class="o">-</span> <span class="n">current_energy</span>
+        
+        <span class="c1"># 6. Based on the energy difference, decide to accept or reject the movement.</span>
+        <span class="n">accept</span> <span class="o">=</span> <span class="n">accept_or_reject</span><span class="p">(</span><span class="n">energy_difference</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+        
+        <span class="c1"># 7. If we accept, move the particle.</span>
+        <span class="k">if</span> <span class="n">accept</span><span class="p">:</span>
+            <span class="n">total_energy</span> <span class="o">+=</span> <span class="n">energy_difference</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">x_rand</span>
+            <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">y_rand</span>
+            <span class="n">coordinates</span><span class="p">[</span><span class="n">random_particle</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">-=</span> <span class="n">z_rand</span>
+    
+        <span class="k">if</span> <span class="n">move</span> <span class="o">%</span> <span class="n">freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">move</span><span class="p">,</span> <span class="n">total_energy</span><span class="o">/</span><span class="n">num_particles</span><span class="p">)</span>
+            <span class="n">all_coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">all_coordinates</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+Now we can try this out in another Python module Jupyter notebook. 
+
+Create a Python module called `run_sim.py` - make sure that you replace yourname with your name!
+The any time &quot;monte_carlo_yourname&quot; is used in the cell below, it should match the name of the module you created above.
+
+````{tab-set-code} 
+
+```{code-block} python
+import monte_carlo_yourname
+
+# Set simulation parameters
+reduced_temperature = 0.9
+num_steps = 50000
+max_displacement = 0.1 
+cutoff = 3
+freq = 1000
+
+# Read initial coordinates
+coordinates, box_length = monte_carlo_yourname.read_xyz(&quot;../data/sample_config1.txt&quot;)
+
+monte_carlo_yourname.run_simulation(coordinates, box_length, reduced_temperature, cutoff, num_steps, max_displacement)
+```
+</pre></div>
+</div>
+<p>You can now run your simulation from the command line (terminal) by typing:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-3" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-python" for="sd-tab-item-3">
-PYTHON</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">monte_carlo_yourname</span>
-
-<span class="c1"># Set simulation parameters</span>
-<span class="n">reduced_temperature</span> <span class="o">=</span> <span class="mf">1.5</span>
-<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">50000</span>
-<span class="n">max_displacement</span> <span class="o">=</span> <span class="mf">0.1</span> 
-<span class="n">cutoff</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">freq</span> <span class="o">=</span> <span class="mi">1000</span>
-
-<span class="c1"># Read initial coordinates</span>
-<span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;lj_sample_configurations&#39;</span><span class="p">,</span> <span class="s1">&#39;lj_sample_config_periodic1.txt&#39;</span><span class="p">)</span>
-<span class="n">coordinates</span><span class="p">,</span> <span class="n">box_length</span> <span class="o">=</span> <span class="n">mcsim</span><span class="o">.</span><span class="n">monte_carlo</span><span class="o">.</span><span class="n">read_xyz</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
-
-<span class="n">monte_carlo_yourname</span><span class="o">.</span><span class="n">run_simulation</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">reduced_temperature</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">,</span> <span class="n">max_displacement</span><span class="p">)</span>
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-4">
+SHELL</label><div class="sd-tab-content docutils">
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>run_sim.py
 </pre></div>
 </div>
 </div>
