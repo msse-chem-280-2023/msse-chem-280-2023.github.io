@@ -883,6 +883,10 @@ PYTHON</label><div class="sd-tab-content docutils">
 <p>For a Monte Carlo simulation, we want to keep track of the coordinates so we can analyze them.
 We can add some additional statements to our functions under <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">move</span> <span class="pre">%</span> <span class="pre">freq</span></code> to keep the coordinates
 at specified snapshots, then we can return them at the end of the simulation.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-python" for="sd-tab-item-4">
+PYTHON</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_simulation</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">reduced_temperature</span><span class="p">,</span> <span class="n">num_moves</span><span class="p">,</span> <span class="n">max_displacement</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
     <span class="c1"># Calculated quantities</span>
     <span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">reduced_temperature</span>
@@ -941,35 +945,36 @@ at specified snapshots, then we can return them at the end of the simulation.</p
     <span class="k">return</span> <span class="n">all_coordinates</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-Now we can try this out in another Python module Jupyter notebook. 
+</div>
+</div>
+<p>Now we can try this out in another Python module Jupyter notebook.</p>
+<p>Create a Python module called <code class="docutils literal notranslate"><span class="pre">run_sim.py</span></code> - make sure that you replace yourname with your name!
+The any time “monte_carlo_yourname” is used in the cell below, it should match the name of the module you created above.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-5" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-python" for="sd-tab-item-5">
+PYTHON</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">monte_carlo_yourname</span>
 
-Create a Python module called `run_sim.py` - make sure that you replace yourname with your name!
-The any time &quot;monte_carlo_yourname&quot; is used in the cell below, it should match the name of the module you created above.
+<span class="c1"># Set simulation parameters</span>
+<span class="n">reduced_temperature</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">50000</span>
+<span class="n">max_displacement</span> <span class="o">=</span> <span class="mf">0.1</span> 
+<span class="n">cutoff</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="mi">1000</span>
 
-````{tab-set-code} 
+<span class="c1"># Read initial coordinates</span>
+<span class="n">coordinates</span><span class="p">,</span> <span class="n">box_length</span> <span class="o">=</span> <span class="n">monte_carlo_yourname</span><span class="o">.</span><span class="n">read_xyz</span><span class="p">(</span><span class="s2">&quot;../data/sample_config1.txt&quot;</span><span class="p">)</span>
 
-```{code-block} python
-import monte_carlo_yourname
-
-# Set simulation parameters
-reduced_temperature = 0.9
-num_steps = 50000
-max_displacement = 0.1 
-cutoff = 3
-freq = 1000
-
-# Read initial coordinates
-coordinates, box_length = monte_carlo_yourname.read_xyz(&quot;../data/sample_config1.txt&quot;)
-
-monte_carlo_yourname.run_simulation(coordinates, box_length, reduced_temperature, cutoff, num_steps, max_displacement)
-```
+<span class="n">monte_carlo_yourname</span><span class="o">.</span><span class="n">run_simulation</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">box_length</span><span class="p">,</span> <span class="n">reduced_temperature</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">,</span> <span class="n">max_displacement</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
 </div>
 <p>You can now run your simulation from the command line (terminal) by typing:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-4" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-4">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-6" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-6">
 SHELL</label><div class="sd-tab-content docutils">
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>run_sim.py
 </pre></div>
