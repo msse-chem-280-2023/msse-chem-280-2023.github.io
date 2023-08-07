@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
@@ -54,6 +54,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'day6/group-assignment';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="First C++ Program" href="02-first-program.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -190,6 +191,13 @@
                     </li>
                 
 
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../day6.html">
+                        Day 6
+                      </a>
+                    </li>
+                
+
                 <li class="nav-item">
                   <a class="nav-link nav-external" href="https://msse.berkeley.edu/">
                     MSSE
@@ -307,7 +315,7 @@ document.write(`
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -368,6 +376,13 @@ document.write(`
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../day5.html">
                         Day 5
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../day6.html">
+                        Day 6
                       </a>
                     </li>
                 
@@ -454,6 +469,21 @@ document.write(`
     
   </div>
   
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-intro-cpp.html">Introduction to C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-first-program.html">First C++ Program</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Group Homework Assignment - Day 6</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
@@ -486,6 +516,9 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
+    
+    <li class="breadcrumb-item"><a href="../day6.html" class="nav-link">Day 6</a></li>
+    
     <li class="breadcrumb-item active" aria-current="page">Group Homework Assignment - Day 6</li>
   </ul>
 </nav>
@@ -505,8 +538,28 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="group-homework-assignment-day-6">
 <h1>Group Homework Assignment - Day 6<a class="headerlink" href="#group-homework-assignment-day-6" title="Permalink to this heading">#</a></h1>
-<section id="about-the-assignment">
-<h2>About the assignment<a class="headerlink" href="#about-the-assignment" title="Permalink to this heading">#</a></h2>
+<section id="discussion">
+<h2>Discussion<a class="headerlink" href="#discussion" title="Permalink to this heading">#</a></h2>
+<p>Read <a class="reference external" href="https://greenteapress.com/thinkpython2/html/thinkpython2003.html">chapter 2 of Think Python</a>.</p>
+<p>As you read through the chapter, thing about what the equivalent C++ code would be, and if there are any differences in the way you would write the code, or in errors that you would get.</p>
+<div class="note admonition">
+<p class="admonition-title">The Python interpreter</p>
+<p>Code in this book sometimes indicated with <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code>. This means you should type <code class="docutils literal notranslate"><span class="pre">python</span></code> in your terminal to open the interative Python interpreter to run the code.</p>
+</div>
+<p>Answer the following questions:</p>
+<ol class="arabic simple">
+<li><p>What does an assignment statement look like in Python? In C++? What are the differences?</p></li>
+<li><p>The chapter says that Python variable names can not start with a number. Is the same true for C++ variable names?</p></li>
+<li><p>What is an expression? Give an example of an expression Python and in C++.</p></li>
+<li><p>Compare using code a for loop that counts to 10 in Python and C++. Write at least three sentences about how the loops are the same or different.</p></li>
+<li><p>Is there an interactive interpreter for C++? Why or why not?</p></li>
+<li><p>Complete Exercise 1 from chapter 2 with both Python and C++.</p></li>
+</ol>
+<p>Include your write up in your homework assignment with in a file called
+<code class="docutils literal notranslate"><span class="pre">lastname_firstname_answers.md</span></code>.</p>
+</section>
+<section id="coding-assignment">
+<h2>Coding Assignment<a class="headerlink" href="#coding-assignment" title="Permalink to this heading">#</a></h2>
 <p>Your assignment is to again approximate the integral from the first individual
 assignment, however this time using the midpoint method in C++.
 The integral you are looking
@@ -590,6 +643,15 @@ would you ever use the Monte-Carlo method?</p></li>
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="02-first-program.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">First C++ Program</p>
+      </div>
+    </a>
 </div></div>
   
 </div>
@@ -608,7 +670,8 @@ would you ever use the Monte-Carlo method?</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-assignment">About the assignment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-assignment">Coding Assignment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-via-summation-riemann-sum">Integration via Summation (Riemann sum)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-questions">Steps &amp; Questions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-questions">Discussion Questions</a></li>
