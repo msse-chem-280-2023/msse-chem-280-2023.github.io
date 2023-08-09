@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exceptions &#8212; UC Berkeley Chem 280  documentation</title>
+    <title>Individual Homework Assignment &#8212; UC Berkeley Chem 280  documentation</title>
   
   
   
@@ -49,11 +49,10 @@
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'day8/04-exceptions';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'individual-assignments/individual-assignment-3';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Individual Homework Assignment" href="../individual-assignments/individual-assignment-3.html" />
-    <link rel="prev" title="Namespaces" href="03-namespaces.html" />
+    <link rel="prev" title="Exceptions" href="../day8/04-exceptions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -500,14 +499,14 @@ document.write(`
         <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01-references.html">References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02-functions.html">Function Calling and Arguments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03-namespaces.html">Namespaces</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exceptions</a></li>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../day8/01-references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day8/02-functions.html">Function Calling and Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day8/03-namespaces.html">Namespaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day8/04-exceptions.html">Exceptions</a></li>
 </ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../individual-assignments/individual-assignment-3.html">Individual Homework Assignment</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Individual Homework Assignment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../day7/group-assignment.html">Group Homework Assignment - Day 7 &amp; 8</a></li>
 </ul>
 </div>
@@ -549,7 +548,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../day8.html" class="nav-link">Day 8</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Exceptions</li>
+    <li class="breadcrumb-item active" aria-current="page">Individual Homework Assignment</li>
   </ul>
 </nav>
 </div>
@@ -566,164 +565,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exceptions">
-<h1>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this heading">#</a></h1>
-<div class="overview admonition">
-<p class="admonition-title">Overview</p>
-<p>Questions:</p>
-<ul class="simple">
-<li><p>How do we handle major errors in C++?</p></li>
-<li><p>How do exceptions differ from python?</p></li>
-</ul>
-<p>Objectives:</p>
-<ul class="simple">
-<li><p>Learn about throwing and catching exception in C++</p></li>
-</ul>
-</div>
-<div class="note admonition">
-<p class="admonition-title">Prerequisites</p>
-<ul class="simple">
-<li><p>Knowledge of basic C++ functions</p></li>
-</ul>
-</div>
-<section id="exception-overview">
-<h2>Exception overview<a class="headerlink" href="#exception-overview" title="Permalink to this heading">#</a></h2>
-<p>Like python, C++ handles errors using exceptions.</p>
-</section>
-<section id="throwing-exceptions">
-<h2>Throwing exceptions<a class="headerlink" href="#throwing-exceptions" title="Permalink to this heading">#</a></h2>
-<p>If we take our simple temperature conversion example, lets throw an exception
-if the temperature is below absolute zero and therefore unphysical.</p>
-<p>First, we need to include the <code class="docutils literal notranslate"><span class="pre">stdexcept</span></code> component of the standard library.
-This will allow us to use the <code class="docutils literal notranslate"><span class="pre">runtime_error</span></code> exception.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-cpp" for="sd-tab-item-0">
-CPP</label><div class="sd-tab-content docutils">
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span>
-
-<span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">absolute_zero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-459.67</span><span class="p">;</span><span class="w"> </span><span class="c1">// in Fahrenheit</span>
-
-<span class="kt">double</span><span class="w"> </span><span class="nf">convert_F_to_C</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">temperature</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">temperature</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">absolute_zero</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;Temperature must be above absolute zero!&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">temperature</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">32.0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mf">5.0</span><span class="o">/</span><span class="mf">9.0</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-999.0</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">convert_F_to_C</span><span class="p">(</span><span class="n">temperature</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Temperature is &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">temperature</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-1" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-output" for="sd-tab-item-1">
-OUTPUT</label><div class="sd-tab-content docutils">
-<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">terminate called after throwing an instance of &#39;std::runtime_error&#39;</span>
-<span class="go">  what():  Temperature must be above absolute zero!</span>
-<span class="go">Aborted (core dumped)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>When run, this code will terminate with an exception, signifying that
-something went wrong and the program could not continue.</p>
-</section>
-<section id="catching-exceptions">
-<h2>Catching exceptions<a class="headerlink" href="#catching-exceptions" title="Permalink to this heading">#</a></h2>
-<p>Exceptions can also be <em>caught</em> and appropriate handling of the error can happen.
-Often this means that the error is logged appropriately, and the program may then continue
-if the error was not serious.</p>
-<p>If an exception is not caught, the result is program termination, as in the above example.</p>
-<p>Exceptions in the standard library (like <code class="docutils literal notranslate"><span class="pre">runtime_error</span></code>) have a <code class="docutils literal notranslate"><span class="pre">.what()</span></code> function that returns
-a string describing the error. In <code class="docutils literal notranslate"><span class="pre">runtime_error</span></code>, this is the string passed to it when it is thrown.</p>
-<p>Lets catch the exception, and write some better output to the terminal</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-cpp" for="sd-tab-item-2">
-CPP</label><div class="sd-tab-content docutils">
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span>
-
-<span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">absolute_zero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-459.67</span><span class="p">;</span><span class="w"> </span><span class="c1">// in Fahrenheit</span>
-
-<span class="kt">double</span><span class="w"> </span><span class="nf">convert_F_to_C</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">temperature</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">temperature</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">absolute_zero</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span><span class="w">   </span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;Temperature must be above absolute zero!&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span><span class="w">   </span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">temperature</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">32.0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mf">5.0</span><span class="o">/</span><span class="mf">9.0</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-999.0</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">convert_F_to_C</span><span class="p">(</span><span class="mf">-999.0</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Caught an exception! Could not convert temperature = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">temperature</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Exception: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ex</span><span class="p">.</span><span class="n">what</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Temperature is &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">temperature</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">        </span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-3" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-output" for="sd-tab-item-3">
-OUTPUT</label><div class="sd-tab-content docutils">
-<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Caught an exception! Could not convert temperature = -999</span>
-<span class="go">Exception: Temperature must be above absolute zero!</span>
-<span class="go">Temperature is -999</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now, the error printed to the terminal is a bit better for the end user.</p>
-<p>When we catch an exception, we give it the type of exception to
-catch. Typically, all exceptions (including exceptions in the standard library)
-derive from <code class="docutils literal notranslate"><span class="pre">std::exception</span></code>, so catching <code class="docutils literal notranslate"><span class="pre">std::exception</span></code> will catch all
-exceptions. You can narrow this if needed to only catch specific exceptions,
-or use <code class="docutils literal notranslate"><span class="pre">(...)</span></code> to catch absolutely everything.</p>
-<p>Typically, exceptions are caught by reference to avoid copying. You can also
-catch by <code class="docutils literal notranslate"><span class="pre">const</span></code> reference if you would like.</p>
-<p>Also note that we <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">1</span></code> inside the exception handler. This is a
-signal to the operating system or parent process that this process exited
-abnormally. That is, <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">0</span></code> from <code class="docutils literal notranslate"><span class="pre">main</span></code> signifies a successful run of
-the process, while returning non-zero signifies an error.</p>
-<div class="key admonition">
-<p class="admonition-title">Key Points</p>
-<ul class="simple">
-<li><p>Exceptions stop execution and go back up the call stack until they are caught</p></li>
-<li><p>Exceptions are the main way to handle major errors in C++</p></li>
-</ul>
-</div>
-</section>
+  <section id="individual-homework-assignment">
+<h1>Individual Homework Assignment<a class="headerlink" href="#individual-homework-assignment" title="Permalink to this heading">#</a></h1>
+<p>This should be completed by each group member individually. <strong>Individual assignments are due one week after being assigned</strong>. The due date for this assignment is one week after being assigned.</p>
+<p>For this assignment, a full explanation is given in the assignment repository.</p>
+<p><a class="reference external" href="https://classroom.github.com/a/S6im4fKu">Click this link to accept the assignment</a></p>
 </section>
 
 
@@ -738,22 +584,13 @@ the process, while returning non-zero signifies an error.</p>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="03-namespaces.html"
+       href="../day8/04-exceptions.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Namespaces</p>
+        <p class="prev-next-title">Exceptions</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../individual-assignments/individual-assignment-3.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Individual Homework Assignment</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
@@ -768,20 +605,8 @@ the process, while returning non-zero signifies an error.</p>
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
   <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-overview">Exception overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#throwing-exceptions">Throwing exceptions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#catching-exceptions">Catching exceptions</a></li>
-</ul>
-  </nav></div>
-
-  <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
-    <a href="../_sources/day8/04-exceptions.md.txt">
+    <a href="../_sources/individual-assignments/individual-assignment-3.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
