@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction to the Command Line &#8212; UC Berkeley Chem 280  documentation</title>
+    <title>Namespaces &#8212; UC Berkeley Chem 280  documentation</title>
   
   
   
@@ -49,11 +49,11 @@
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'day1/01-command-line';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'day8/03-namespaces';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Introduction to Version Control with Git" href="02-git.html" />
-    <link rel="prev" title="Day 1" href="../day1.html" />
+    <link rel="next" title="Exceptions" href="04-exceptions.html" />
+    <link rel="prev" title="Function Calling and Arguments" href="02-functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,7 +150,7 @@
                     </li>
                 
 
-                    <li class="nav-item current active">
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../day1.html">
                         Day 1
                       </a>
@@ -204,7 +204,7 @@
                     </li>
                 
 
-                    <li class="nav-item">
+                    <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../day8.html">
                         Day 8
                       </a>
@@ -353,7 +353,7 @@ document.write(`
                     </li>
                 
 
-                    <li class="nav-item current active">
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../day1.html">
                         Day 1
                       </a>
@@ -407,7 +407,7 @@ document.write(`
                     </li>
                 
 
-                    <li class="nav-item">
+                    <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../day8.html">
                         Day 8
                       </a>
@@ -501,14 +501,13 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to the Command Line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02-git.html">Introduction to Version Control with Git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03-github.html">Using GitHub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04-collaboration.html">Code Collaboration using GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-functions.html">Function Calling and Arguments</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Namespaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-exceptions.html">Exceptions</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="group-discussion.html">Group Discussion - Day 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="group-assignment.html">Day 1 - Group Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day7/group-assignment.html">Group Homework Assignment - Day 7 &amp; 8</a></li>
 </ul>
 </div>
 </nav></div>
@@ -547,9 +546,9 @@ document.write(`
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../day1.html" class="nav-link">Day 1</a></li>
+    <li class="breadcrumb-item"><a href="../day8.html" class="nav-link">Day 8</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Introduction to the Command Line</li>
+    <li class="breadcrumb-item active" aria-current="page">Namespaces</li>
   </ul>
 </nav>
 </div>
@@ -566,251 +565,160 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-the-command-line">
-<h1>Introduction to the Command Line<a class="headerlink" href="#introduction-to-the-command-line" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="namespaces">
+<h1>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions:</p>
 <ul class="simple">
-<li><p>What is the command line?</p></li>
-<li><p>How can I navigate files and directories on the command line?</p></li>
+<li><p>How can we group functions together under a single collection?</p></li>
+<li><p>How can I prevent collisions with functions having the same name in other libraries?</p></li>
 </ul>
 <p>Objectives:</p>
 <ul class="simple">
-<li><p>Learn basic shell commands for navigating and creating directories.</p></li>
+<li><p>Learn about grouping functions and objects with namespaces</p></li>
 </ul>
 </div>
-<section id="lesson-slides">
-<h2>Lesson Slides<a class="headerlink" href="#lesson-slides" title="Permalink to this heading">#</a></h2>
-<p><a class="reference download internal" download="" href="../_downloads/d6b8da260e42d885eac525c41ba844e0/day-1-topics.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Lesson</span> <span class="pre">Slides</span></code></a></p>
+<div class="note admonition">
+<p class="admonition-title">Prerequisites</p>
+<ul class="simple">
+<li><p>Knowledge of basic C++ functions</p></li>
+</ul>
+</div>
+<section id="namespace-overview">
+<h2>Namespace overview<a class="headerlink" href="#namespace-overview" title="Permalink to this heading">#</a></h2>
+<p>If you are working on a large package, you will often have a large number of
+functions and other code that could logically be grouped together. This may
+be a top-level group (for your whole package) or even smaller groups within
+your package.</p>
+<p>Just like in python, where you group your code into modules, you can group
+your code into C++ <em>namespaces</em>.</p>
+<p>There is one important difference between C++ and Python in this respect,
+however – in python, your module names reflect the filename and directory
+of those modules. In C++, there is no restriction, and the namespace is
+often split over many files and directories.</p>
 </section>
-<section id="opening-the-terminal">
-<h2>Opening the Terminal<a class="headerlink" href="#opening-the-terminal" title="Permalink to this heading">#</a></h2>
-<p>In this course, we will be navigating files and using git (a software for version control) using the command line.
-The Linux command line is a text interface to your computer.
-When you use the command line, you use something called a shell.
-You can access the command line, or shell, using a <em>terminal</em>.
-If you are using WSL, the only type of interface you have to your Linux operating system is a command line, or terminal.</p>
-<p>In scientific computing, you will need to use the Linux command line on high performance computing (HPC) servers.
-Knowing the command line will also allow you to perform repetitive tasks quickly through shell scripting.
-You will learn more about the command line and scripting in Chem 274A.
-For this course, we will focus on basic navigation, file creation, and using git from the command line.</p>
-<p>Most modern operating systems have graphical user interfaces, or GUIs (often pronounced “gooey”), that are used to interact with the computer.
-However, you can also interact with the computer using text only.</p>
-<p><a class="reference external" href="https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955">Open your terminal</a>.
-On Mac, you should be able to find a terminal application.
-If you are using WSL, open your Linux distribution.
-You can use this interface to issue commands to your computer using text.</p>
-</section>
-<section id="viewing-directory-contents">
-<h2>Viewing Directory Contents<a class="headerlink" href="#viewing-directory-contents" title="Permalink to this heading">#</a></h2>
-<p>The first command we will discuss is the command <code class="docutils literal notranslate"><span class="pre">pwd</span></code>.
-<code class="docutils literal notranslate"><span class="pre">pwd</span></code> stands for “<strong>p</strong>rint <strong>w</strong>orking <strong>d</strong>irectory.”
-This command gives the name of the folder you are currently in.
-In Linux, “directory” means the same thing as “folder”.</p>
+<section id="creating-namespaces">
+<h2>Creating namespaces<a class="headerlink" href="#creating-namespaces" title="Permalink to this heading">#</a></h2>
+<p>You can create a namespace with the <code class="docutils literal notranslate"><span class="pre">namespace</span></code> keyword. The following code creates
+a namespace <code class="docutils literal notranslate"><span class="pre">my_package</span></code> and adds a simple function to it. The function is then
+accessed using the <em>scope resolution operator</em> (<code class="docutils literal notranslate"><span class="pre">::</span></code>).</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-0">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>
+</input><label class="sd-tab-label" data-sync-id="tabcode-cpp" for="sd-tab-item-0">
+CPP</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">my_package</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">print_string</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;String: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span><span class="w"> </span><span class="c1">// close namespace my_package</span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">my_package</span><span class="o">::</span><span class="n">print_string</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Namespaces can be nested as well, and can contain global variables.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-1" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-output" for="sd-tab-item-1">
-OUTPUT</label><div class="sd-tab-content docutils">
-<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">/YOUR/PATH</span>
+</input><label class="sd-tab-label" data-sync-id="tabcode-cpp" for="sd-tab-item-1">
+CPP</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">my_package</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.1415</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">namespace</span><span class="w"> </span><span class="nn">printing</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="nf">print_string</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;String: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// close namespace functions</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// close namespace my_package</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">my_package</span><span class="o">::</span><span class="n">printing</span><span class="o">::</span><span class="n">print_string</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Pi: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">my_package</span><span class="o">::</span><span class="n">pi</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>When you open a terminal initially, you will be in your home directory.
-The path displayed as your output will be whatever your home directory is if you type <code class="docutils literal notranslate"><span class="pre">pwd</span></code> immediately after opening your terrminal.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">ls</span></code> command shows you the contents of the directory you are in.
-<code class="docutils literal notranslate"><span class="pre">ls</span></code> stands for “list”, and the command shows you the contents of the directory you are in.</p>
+<p>In general, namespaces are a good idea, particularly if you are writing a library that
+will be used by other people. This makes it clear where each function is coming from,
+as well as prevents collisions with functions that may have the same name.</p>
+</section>
+<section id="importing-all-names-from-a-namespace">
+<h2>Importing all names from a namespace<a class="headerlink" href="#importing-all-names-from-a-namespace" title="Permalink to this heading">#</a></h2>
+<p>It can be tedious to have to always prefix functions with the namespace, especially if you are using
+many of them all the time. You can tell the compiler to always search a particular namespace
+for a function with the <code class="docutils literal notranslate"><span class="pre">using</span></code> keyword. This keyword can be used at the file level or even
+at the function level.</p>
+<p>One common one is to always use <code class="docutils literal notranslate"><span class="pre">std</span></code> without needing to prefix with <code class="docutils literal notranslate"><span class="pre">std::</span></code>.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-2">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ls
+</input><label class="sd-tab-label" data-sync-id="tabcode-cpp" for="sd-tab-item-2">
+CPP</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="c1">// Search std for functions/objects </span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"> </span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">my_package</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.1415</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">namespace</span><span class="w"> </span><span class="nn">printing</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="nf">print_string</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;String: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// close namespace functions</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// close namespace my_package</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">my_package</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Still need to use the inner namespace</span>
+<span class="w">    </span><span class="n">printing</span><span class="o">::</span><span class="n">print_string</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Pi: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">my_package</span><span class="o">::</span><span class="n">pi</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>If you want to see contents of another directory, you can follow <code class="docutils literal notranslate"><span class="pre">ls</span></code> with the path to that directory.
-In the command below, you should substitute a directory you can see from the previous <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-3" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-3">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>DIRECTORY_NAME
-</pre></div>
-</div>
-</div>
-</div>
+<p>Importing things this way is analogous to using <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">package</span> <span class="pre">import</span> <span class="pre">*</span></code> in python.</p>
 <div class="note admonition">
-<p class="admonition-title">Clearing the screen</p>
-<p>If you’d like to make room on your screen, you can use the <code class="docutils literal notranslate"><span class="pre">clear</span></code> command too get a fresh terminal.
-Pressing <code class="docutils literal notranslate"><span class="pre">ctrl+L</span></code> on your keyboard will also clear the screen.</p>
-</div>
-</section>
-<section id="creating-and-navigating-directories">
-<h2>Creating and navigating directories<a class="headerlink" href="#creating-and-navigating-directories" title="Permalink to this heading">#</a></h2>
-<p>We will make a directory to keep our work in for the course.
-For the sake of uniformity, these directions will tell you how to create a folder in your home directory.
-If you have another preference for where you would like to store your files and you are able to navigate files, you can use that location.</p>
-<p>The command to <strong>m</strong>a<strong>k</strong>e a <strong>dir</strong>ectory is <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-4" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-4">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>chem_280
-</pre></div>
-</div>
-</div>
-</div>
-<div class="exercise admonition">
-<p class="admonition-title">Check Your Understanding</p>
-<p>What command that you have learned so far could you use to see that your newly created folder is in your current location?</p>
-<div class="solution dropdown admonition">
-<p class="admonition-title">Solution</p>
-<p>You could use the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command to confirm that there is now a folder called <code class="docutils literal notranslate"><span class="pre">chem_280</span></code> in your home directory.</p>
-</div>
-</div>
-<p>This has created an empty folder, or directory, named <code class="docutils literal notranslate"><span class="pre">chem_280</span></code> in your home directory.
-To navigate to be inside of that directory, we need to <strong>c</strong>hange the <strong>d</strong>irectory we are in using the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command.</p>
-<div class="note admonition">
-<p class="admonition-title">Spaces in file and directory names</p>
-<p>In general, you will notice that most file and directory names created on systems where the command line is used do not contain spaces.</p>
-<p>On the command line, many applications and scripts may not work with file names or directories containing spaces.
-It is best to use underscores <code class="docutils literal notranslate"><span class="pre">_</span></code> or dashes <code class="docutils literal notranslate"><span class="pre">-</span></code> to separate words in file names.</p>
-</div>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-5" name="sd-tab-set-5" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-5">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>chem_280
-</pre></div>
-</div>
-</div>
-</div>
-<p>We will create a file that has a description of what is in this folder.</p>
-<p>You can verify what folder you are in using the <code class="docutils literal notranslate"><span class="pre">pwd</span></code> command.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-6" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-6">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Open a text file in your text editor of choice.
-If you installed <a class="reference external" href="https://code.visualstudio.com/download">VSCode</a>  you will be able to open a file called <code class="docutils literal notranslate"><span class="pre">README.md</span></code> using VSCode with the following command. <strong>Note</strong> If you are on MacOS it will be necessary to <a class="reference external" href="https://code.visualstudio.com/docs/setup/mac">add VSCode to your path manually</a>.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-7" name="sd-tab-set-7" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-7">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>code<span class="w"> </span>README.md
-</pre></div>
-</div>
-</div>
-</div>
-<p>The Visual Studio Code text editor will open with a file called <code class="docutils literal notranslate"><span class="pre">README.md</span></code>.
-Type some information in the file and save it.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-8" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-README.md" for="sd-tab-item-8">
-README.MD</label><div class="sd-tab-content docutils">
-<div class="highlight-README.md notranslate"><div class="highlight"><pre><span></span><span class="gh"># Chem 280</span>
-This folder contains files and directories associated with Chem 280 - 
-Foundations of Programming and Software Engineering.
-</pre></div>
-</div>
-</div>
-</div>
-<p>This file uses something called <a class="reference external" href="https://www.markdownguide.org/">Markdown</a>, which a mark-up, or text formatting language.
-This is often used for README files, and we will use <code class="docutils literal notranslate"><span class="pre">Markdown</span></code> throughout the bootcamp.
-The hashtag (<code class="docutils literal notranslate"><span class="pre">#</span></code>) followed by the space results indicates a title.
-Save this file and exit.</p>
-<p>Now, when you type <code class="docutils literal notranslate"><span class="pre">ls</span></code>, you will see that you have a file called <code class="docutils literal notranslate"><span class="pre">README.md</span></code> in your directory.</p>
-<p>To navigate out of this folder, you can use <code class="docutils literal notranslate"><span class="pre">..</span></code> as the file location.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-9" name="sd-tab-set-9" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-9">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>..
-</pre></div>
-</div>
-</div>
-</div>
-<p>This will move you back to your home directory.</p>
-<div class="note admonition">
-<p class="admonition-title">Changing to the home directory from anywhere</p>
-<p>If you use the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command followed by no path, you will always be returned to your home directory.</p>
-</div>
-<p>Other commands which will be useful to you are <code class="docutils literal notranslate"><span class="pre">mv</span></code> which is used for moving files from one place to another, and <code class="docutils literal notranslate"><span class="pre">cp</span></code> for copying files from one place to another. For example, you can create a copy of your README.md file:</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-10" name="sd-tab-set-10" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-10">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>chem_280/README.md<span class="w"> </span>.
-</pre></div>
-</div>
-</div>
-</div>
-<p>This command will create a copy of the README.md file in your current directory.
-The dot (<code class="docutils literal notranslate"><span class="pre">.</span></code>) is a short-cut for your current directory.
-In this case, the created file will have the same name as the one you copied it from.
-You could also give the file another name:</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-11" name="sd-tab-set-11" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-11">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>chem_280/README.md<span class="w"> </span>README_copy.md
-</pre></div>
-</div>
-</div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">mv</span></code> command behaves the same way except that the original file is removed.</p>
-<p>You can remove a file using the <code class="docutils literal notranslate"><span class="pre">rm</span></code> command.
-Let’s get rid of those copies we just made:</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-12" name="sd-tab-set-12" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-12">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>README.md
-rm<span class="w"> </span>README_copy.md
-</pre></div>
-</div>
-</div>
-</div>
-<div class="exercise admonition">
-<p class="admonition-title">Challenge</p>
-<p>Navigate to your <code class="docutils literal notranslate"><span class="pre">chem_280</span></code> directory and list the directory contents.</p>
-<div class="dropdown solution admonition">
-<p class="admonition-title">Solution</p>
-<p>The commands you should execute are</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-13" name="sd-tab-set-13" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-13">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>chem_280
-ls
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+<p class="admonition-title">Importing everything from a namespace</p>
+<p>Do you think it is a good idea to import everything from a namespace? When should it be done?
+Is it cleaner to do it, or does it make code more confusing?</p>
 </div>
 <div class="key admonition">
 <p class="admonition-title">Key Points</p>
 <ul class="simple">
-<li><p>The terminal or “command line” is a text interface to your computer.</p></li>
-<li><p>You can use text commands in the command line to navigate directories and change files.</p></li>
-<li><p>We will use a text mark-up notation called “markdown”. This will be in text files and doesn’t directly have to do with the terminal.</p></li>
+<li><p>Namespaces allow programmers to group all their functions under a single name</p></li>
 </ul>
 </div>
 </section>
@@ -828,20 +736,20 @@ ls
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../day1.html"
+       href="02-functions.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Day 1</p>
+        <p class="prev-next-title">Function Calling and Arguments</p>
       </div>
     </a>
     <a class="right-next"
-       href="02-git.html"
+       href="04-exceptions.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to Version Control with Git</p>
+        <p class="prev-next-title">Exceptions</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -863,16 +771,15 @@ ls
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-slides">Lesson Slides</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-the-terminal">Opening the Terminal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-directory-contents">Viewing Directory Contents</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-navigating-directories">Creating and navigating directories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#namespace-overview">Namespace overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-namespaces">Creating namespaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-all-names-from-a-namespace">Importing all names from a namespace</a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
-    <a href="../_sources/day1/01-command-line.md.txt">
+    <a href="../_sources/day8/03-namespaces.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

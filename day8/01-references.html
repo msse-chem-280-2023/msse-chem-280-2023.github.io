@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction to the Command Line &#8212; UC Berkeley Chem 280  documentation</title>
+    <title>References &#8212; UC Berkeley Chem 280  documentation</title>
   
   
   
@@ -49,11 +49,11 @@
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'day1/01-command-line';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'day8/01-references';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Introduction to Version Control with Git" href="02-git.html" />
-    <link rel="prev" title="Day 1" href="../day1.html" />
+    <link rel="next" title="Function Calling and Arguments" href="02-functions.html" />
+    <link rel="prev" title="Day 8" href="../day8.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,7 +150,7 @@
                     </li>
                 
 
-                    <li class="nav-item current active">
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../day1.html">
                         Day 1
                       </a>
@@ -204,7 +204,7 @@
                     </li>
                 
 
-                    <li class="nav-item">
+                    <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../day8.html">
                         Day 8
                       </a>
@@ -353,7 +353,7 @@ document.write(`
                     </li>
                 
 
-                    <li class="nav-item current active">
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../day1.html">
                         Day 1
                       </a>
@@ -407,7 +407,7 @@ document.write(`
                     </li>
                 
 
-                    <li class="nav-item">
+                    <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../day8.html">
                         Day 8
                       </a>
@@ -501,14 +501,13 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to the Command Line</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02-git.html">Introduction to Version Control with Git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03-github.html">Using GitHub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04-collaboration.html">Code Collaboration using GitHub</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-functions.html">Function Calling and Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-namespaces.html">Namespaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-exceptions.html">Exceptions</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="group-discussion.html">Group Discussion - Day 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="group-assignment.html">Day 1 - Group Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day7/group-assignment.html">Group Homework Assignment - Day 7 &amp; 8</a></li>
 </ul>
 </div>
 </nav></div>
@@ -547,9 +546,9 @@ document.write(`
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../day1.html" class="nav-link">Day 1</a></li>
+    <li class="breadcrumb-item"><a href="../day8.html" class="nav-link">Day 8</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Introduction to the Command Line</li>
+    <li class="breadcrumb-item active" aria-current="page">References</li>
   </ul>
 </nav>
 </div>
@@ -566,252 +565,171 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-the-command-line">
-<h1>Introduction to the Command Line<a class="headerlink" href="#introduction-to-the-command-line" title="Permalink to this heading">#</a></h1>
-<div class="overview admonition">
-<p class="admonition-title">Overview</p>
-<p>Questions:</p>
-<ul class="simple">
-<li><p>What is the command line?</p></li>
-<li><p>How can I navigate files and directories on the command line?</p></li>
-</ul>
-<p>Objectives:</p>
-<ul class="simple">
-<li><p>Learn basic shell commands for navigating and creating directories.</p></li>
-</ul>
-</div>
-<section id="lesson-slides">
-<h2>Lesson Slides<a class="headerlink" href="#lesson-slides" title="Permalink to this heading">#</a></h2>
-<p><a class="reference download internal" download="" href="../_downloads/d6b8da260e42d885eac525c41ba844e0/day-1-topics.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Lesson</span> <span class="pre">Slides</span></code></a></p>
-</section>
-<section id="opening-the-terminal">
-<h2>Opening the Terminal<a class="headerlink" href="#opening-the-terminal" title="Permalink to this heading">#</a></h2>
-<p>In this course, we will be navigating files and using git (a software for version control) using the command line.
-The Linux command line is a text interface to your computer.
-When you use the command line, you use something called a shell.
-You can access the command line, or shell, using a <em>terminal</em>.
-If you are using WSL, the only type of interface you have to your Linux operating system is a command line, or terminal.</p>
-<p>In scientific computing, you will need to use the Linux command line on high performance computing (HPC) servers.
-Knowing the command line will also allow you to perform repetitive tasks quickly through shell scripting.
-You will learn more about the command line and scripting in Chem 274A.
-For this course, we will focus on basic navigation, file creation, and using git from the command line.</p>
-<p>Most modern operating systems have graphical user interfaces, or GUIs (often pronounced “gooey”), that are used to interact with the computer.
-However, you can also interact with the computer using text only.</p>
-<p><a class="reference external" href="https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955">Open your terminal</a>.
-On Mac, you should be able to find a terminal application.
-If you are using WSL, open your Linux distribution.
-You can use this interface to issue commands to your computer using text.</p>
-</section>
-<section id="viewing-directory-contents">
-<h2>Viewing Directory Contents<a class="headerlink" href="#viewing-directory-contents" title="Permalink to this heading">#</a></h2>
-<p>The first command we will discuss is the command <code class="docutils literal notranslate"><span class="pre">pwd</span></code>.
-<code class="docutils literal notranslate"><span class="pre">pwd</span></code> stands for “<strong>p</strong>rint <strong>w</strong>orking <strong>d</strong>irectory.”
-This command gives the name of the folder you are currently in.
-In Linux, “directory” means the same thing as “folder”.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h1>
+<p>While pointers are inherited from the C language, C++ introduces a new but
+similar concept - a <em>reference</em>.  References are similar to pointers
+with a few key differences</p>
+<ol class="arabic simple">
+<li><p>References must be set to reference an existing object</p></li>
+<li><p>References cannot be NULL/nullptr</p></li>
+<li><p>Once set, references cannot be <em>re-seated</em> (made to reference something else)</p></li>
+<li><p>The star operator is not required to dereference a reference</p></li>
+</ol>
+<p>References are created by using <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> with the type. For example,</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-0">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>
+</input><label class="sd-tab-label" data-sync-id="tabcode-cpp" for="sd-tab-item-0">
+CPP</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">my_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello world!&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Regular string</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ref_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_string</span><span class="p">;</span><span class="w"> </span><span class="c1">// Reference to my_string</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>However, given the differences listed above</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-1" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-output" for="sd-tab-item-1">
-OUTPUT</label><div class="sd-tab-content docutils">
-<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">/YOUR/PATH</span>
+</input><label class="sd-tab-label" data-sync-id="tabcode-cpp" for="sd-tab-item-1">
+CPP</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">empty_ref</span><span class="p">;</span><span class="w"> </span><span class="c1">// not valid - must reference something</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">my_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello world!&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Regular string</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ref_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_string</span><span class="p">;</span><span class="w"> </span><span class="c1">// Ok, reference to my_string</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">my_string_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello again, world!&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Regular string</span>
+<span class="n">ref_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_string_2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cannot re-seat reference. Will copy instead.</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>When you open a terminal initially, you will be in your home directory.
-The path displayed as your output will be whatever your home directory is if you type <code class="docutils literal notranslate"><span class="pre">pwd</span></code> immediately after opening your terrminal.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">ls</span></code> command shows you the contents of the directory you are in.
-<code class="docutils literal notranslate"><span class="pre">ls</span></code> stands for “list”, and the command shows you the contents of the directory you are in.</p>
+<p>If we go back to our original pointer example, we can see that taking the address
+of the reference results in the same address as the pointed-to object.
+And, like pointers, the original object can be modified via the reference.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-2">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ls
+</input><label class="sd-tab-label" data-sync-id="tabcode-cpp" for="sd-tab-item-2">
+CPP</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1"> // for std::cout, std::endl</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1234</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Value of j: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w"> </span><span class="c1">// rj references j</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Value of rj: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">rj</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Address of j: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rj</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Address of rj: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rj</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Change j via rj</span>
+<span class="w">    </span><span class="n">rj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5678</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Value changed!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;New Value of j: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;New Value of rj: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">rj</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>If you want to see contents of another directory, you can follow <code class="docutils literal notranslate"><span class="pre">ls</span></code> with the path to that directory.
-In the command below, you should substitute a directory you can see from the previous <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-3" name="sd-tab-set-3" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-3">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>DIRECTORY_NAME
+</input><label class="sd-tab-label" data-sync-id="tabcode-output" for="sd-tab-item-3">
+OUTPUT</label><div class="sd-tab-content docutils">
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Value of j: 1234</span>
+<span class="go">Value of rj: 1234</span>
+<span class="go">Address of j: 0x7fff8727380c</span>
+<span class="go">Address of rj: 0x7fff8727380c</span>
+<span class="go">Value changed!</span>
+<span class="go">New Value of j: 5678</span>
+<span class="go">New Value of rj: 5678</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="note admonition">
-<p class="admonition-title">Clearing the screen</p>
-<p>If you’d like to make room on your screen, you can use the <code class="docutils literal notranslate"><span class="pre">clear</span></code> command too get a fresh terminal.
-Pressing <code class="docutils literal notranslate"><span class="pre">ctrl+L</span></code> on your keyboard will also clear the screen.</p>
-</div>
-</section>
-<section id="creating-and-navigating-directories">
-<h2>Creating and navigating directories<a class="headerlink" href="#creating-and-navigating-directories" title="Permalink to this heading">#</a></h2>
-<p>We will make a directory to keep our work in for the course.
-For the sake of uniformity, these directions will tell you how to create a folder in your home directory.
-If you have another preference for where you would like to store your files and you are able to navigate files, you can use that location.</p>
-<p>The command to <strong>m</strong>a<strong>k</strong>e a <strong>dir</strong>ectory is <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-4" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-4">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>chem_280
-</pre></div>
-</div>
-</div>
-</div>
-<div class="exercise admonition">
-<p class="admonition-title">Check Your Understanding</p>
-<p>What command that you have learned so far could you use to see that your newly created folder is in your current location?</p>
-<div class="solution dropdown admonition">
-<p class="admonition-title">Solution</p>
-<p>You could use the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command to confirm that there is now a folder called <code class="docutils literal notranslate"><span class="pre">chem_280</span></code> in your home directory.</p>
-</div>
-</div>
-<p>This has created an empty folder, or directory, named <code class="docutils literal notranslate"><span class="pre">chem_280</span></code> in your home directory.
-To navigate to be inside of that directory, we need to <strong>c</strong>hange the <strong>d</strong>irectory we are in using the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command.</p>
-<div class="note admonition">
-<p class="admonition-title">Spaces in file and directory names</p>
-<p>In general, you will notice that most file and directory names created on systems where the command line is used do not contain spaces.</p>
-<p>On the command line, many applications and scripts may not work with file names or directories containing spaces.
-It is best to use underscores <code class="docutils literal notranslate"><span class="pre">_</span></code> or dashes <code class="docutils literal notranslate"><span class="pre">-</span></code> to separate words in file names.</p>
-</div>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-5" name="sd-tab-set-5" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-5">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>chem_280
-</pre></div>
-</div>
-</div>
-</div>
-<p>We will create a file that has a description of what is in this folder.</p>
-<p>You can verify what folder you are in using the <code class="docutils literal notranslate"><span class="pre">pwd</span></code> command.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-6" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-6">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Open a text file in your text editor of choice.
-If you installed <a class="reference external" href="https://code.visualstudio.com/download">VSCode</a>  you will be able to open a file called <code class="docutils literal notranslate"><span class="pre">README.md</span></code> using VSCode with the following command. <strong>Note</strong> If you are on MacOS it will be necessary to <a class="reference external" href="https://code.visualstudio.com/docs/setup/mac">add VSCode to your path manually</a>.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-7" name="sd-tab-set-7" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-7">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>code<span class="w"> </span>README.md
-</pre></div>
-</div>
-</div>
-</div>
-<p>The Visual Studio Code text editor will open with a file called <code class="docutils literal notranslate"><span class="pre">README.md</span></code>.
-Type some information in the file and save it.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-8" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-README.md" for="sd-tab-item-8">
-README.MD</label><div class="sd-tab-content docutils">
-<div class="highlight-README.md notranslate"><div class="highlight"><pre><span></span><span class="gh"># Chem 280</span>
-This folder contains files and directories associated with Chem 280 - 
-Foundations of Programming and Software Engineering.
-</pre></div>
-</div>
-</div>
-</div>
-<p>This file uses something called <a class="reference external" href="https://www.markdownguide.org/">Markdown</a>, which a mark-up, or text formatting language.
-This is often used for README files, and we will use <code class="docutils literal notranslate"><span class="pre">Markdown</span></code> throughout the bootcamp.
-The hashtag (<code class="docutils literal notranslate"><span class="pre">#</span></code>) followed by the space results indicates a title.
-Save this file and exit.</p>
-<p>Now, when you type <code class="docutils literal notranslate"><span class="pre">ls</span></code>, you will see that you have a file called <code class="docutils literal notranslate"><span class="pre">README.md</span></code> in your directory.</p>
-<p>To navigate out of this folder, you can use <code class="docutils literal notranslate"><span class="pre">..</span></code> as the file location.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-9" name="sd-tab-set-9" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-9">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>..
-</pre></div>
-</div>
-</div>
-</div>
-<p>This will move you back to your home directory.</p>
-<div class="note admonition">
-<p class="admonition-title">Changing to the home directory from anywhere</p>
-<p>If you use the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command followed by no path, you will always be returned to your home directory.</p>
-</div>
-<p>Other commands which will be useful to you are <code class="docutils literal notranslate"><span class="pre">mv</span></code> which is used for moving files from one place to another, and <code class="docutils literal notranslate"><span class="pre">cp</span></code> for copying files from one place to another. For example, you can create a copy of your README.md file:</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-10" name="sd-tab-set-10" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-10">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>chem_280/README.md<span class="w"> </span>.
-</pre></div>
-</div>
-</div>
-</div>
-<p>This command will create a copy of the README.md file in your current directory.
-The dot (<code class="docutils literal notranslate"><span class="pre">.</span></code>) is a short-cut for your current directory.
-In this case, the created file will have the same name as the one you copied it from.
-You could also give the file another name:</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-11" name="sd-tab-set-11" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-11">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>chem_280/README.md<span class="w"> </span>README_copy.md
-</pre></div>
-</div>
-</div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">mv</span></code> command behaves the same way except that the original file is removed.</p>
-<p>You can remove a file using the <code class="docutils literal notranslate"><span class="pre">rm</span></code> command.
-Let’s get rid of those copies we just made:</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-12" name="sd-tab-set-12" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-12">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>README.md
-rm<span class="w"> </span>README_copy.md
-</pre></div>
-</div>
-</div>
-</div>
-<div class="exercise admonition">
-<p class="admonition-title">Challenge</p>
-<p>Navigate to your <code class="docutils literal notranslate"><span class="pre">chem_280</span></code> directory and list the directory contents.</p>
-<div class="dropdown solution admonition">
-<p class="admonition-title">Solution</p>
-<p>The commands you should execute are</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-13" name="sd-tab-set-13" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-shell" for="sd-tab-item-13">
-SHELL</label><div class="sd-tab-content docutils">
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>chem_280
-ls
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<p>It is not common to use references by themselves, but they are very common
+when passing arguments to functions (which we will see in the next lesson).</p>
 <div class="key admonition">
 <p class="admonition-title">Key Points</p>
 <ul class="simple">
-<li><p>The terminal or “command line” is a text interface to your computer.</p></li>
-<li><p>You can use text commands in the command line to navigate directories and change files.</p></li>
-<li><p>We will use a text mark-up notation called “markdown”. This will be in text files and doesn’t directly have to do with the terminal.</p></li>
+<li><p>Pointers are variables that point to an area of memory</p></li>
+<li><p>Pointers can be used to store homogeneous lists of items</p></li>
 </ul>
+</div>
+<section id="the-const-keyword">
+<h2>The <code class="docutils literal notranslate"><span class="pre">const</span></code> Keyword<a class="headerlink" href="#the-const-keyword" title="Permalink to this heading">#</a></h2>
+<p>In C/C++, it is possible to mark a variable as constant, such that after
+setting, the value cannot be changed. Marking a variable as constant can also
+enable some performance improvements, although these are typically very small.
+However, they are primarily used to signify intent to other programmers,
+and can prevent some mistakes.</p>
+<p>To create a constant variable, the keyword <code class="docutils literal notranslate"><span class="pre">const</span></code> is placed before the type.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-cpp" for="sd-tab-item-4">
+CPP</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.1415</span><span class="p">;</span><span class="w"> </span><span class="c1">// Constant double</span>
+<span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">my_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello world!&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Constant string</span>
+<span class="n">my_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Another string&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Error - my_string is const!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because the constant variable cannot be changed, it must be set at the same
+time it is declared. Otherwise, you would never be able to set the value!</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-5" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-cpp" for="sd-tab-item-5">
+CPP</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">123</span><span class="p">;</span><span class="w"> </span><span class="c1">// Declare and set</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w"> </span><span class="c1">// j can never be changed after this, so this is invalid.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Constant variables can be very useful in some cases. For example, for storing
+physical constants or common strings. As we will see, they are most often
+used for declaring objects passed to functions as <code class="docutils literal notranslate"><span class="pre">const</span></code>.</p>
+<p>Constant references work in a simiar way. Data cannot be changed through a
+constant reference.</p>
+<p>A constant reference can refer to a constant or non-constant variable.
+However, a non-const reference can only refer to a non-constant variable.
+Otherwise, we would be able to change constant data just my making a reference
+to it.</p>
+<div class="exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>What happens when you try to make a non-const reference to const data?</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-6" type="radio">
+</input><label class="sd-tab-label" data-sync-id="tabcode-cpp" for="sd-tab-item-6">
+CPP</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.123</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">d2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown solution admonition">
+<p class="admonition-title">Solution</p>
+<p>A compiler error, of course!</p>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">test.cpp: In function ‘int main()’:</span>
+<span class="go">test.cpp:4:19: error: binding reference of type ‘double&amp;’ to ‘const double’ discards qualifiers</span>
+<span class="go">    4 |     double &amp; d2 = d;</span>
+<span class="go">      |    </span>
+</pre></div>
+</div>
+<p>In C++, the <code class="docutils literal notranslate"><span class="pre">const</span></code> keyword is called a <em>qualifiers</em>. The compiler is telling
+you that making the reference discards the <code class="docutils literal notranslate"><span class="pre">const</span></code> qualifier. <code class="docutils literal notranslate"><span class="pre">volitile</span></code> is another qualifier, however
+it is very rarely used in scientific computing.</p>
+</div>
 </div>
 </section>
 </section>
@@ -828,20 +746,20 @@ ls
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../day1.html"
+       href="../day8.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Day 1</p>
+        <p class="prev-next-title">Day 8</p>
       </div>
     </a>
     <a class="right-next"
-       href="02-git.html"
+       href="02-functions.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to Version Control with Git</p>
+        <p class="prev-next-title">Function Calling and Arguments</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -863,16 +781,13 @@ ls
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-slides">Lesson Slides</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-the-terminal">Opening the Terminal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-directory-contents">Viewing Directory Contents</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-navigating-directories">Creating and navigating directories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-const-keyword">The <code class="docutils literal notranslate"><span class="pre">const</span></code> Keyword</a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
-    <a href="../_sources/day1/01-command-line.md.txt">
+    <a href="../_sources/day8/01-references.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
