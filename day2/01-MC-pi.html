@@ -214,6 +214,13 @@
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../day9.html">
+                        Day 9
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../individual-assignments.html">
                         Individual Assignments
                       </a>
@@ -426,6 +433,13 @@ document.write(`
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../day8.html">
                         Day 8
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../day9.html">
+                        Day 9
                       </a>
                     </li>
                 
@@ -823,8 +837,8 @@ PYTHON</label><div class="sd-tab-content docutils">
 <p>Monte Carlo methods are numerical techniques
 frequently used to estimate complex multidimensional integrals which otherwise could not be performed. The idea of Monte Carlo integration is to estimate the value of an integral by generating random points from the probability density.</p>
 <p>For instance, the integral of the function <span class="math notranslate nohighlight">\(f(\textbf{x})\)</span>, where <span class="math notranslate nohighlight">\(\textbf{x} \in \Re^{M}\)</span>, is approximated as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bc13603f-4102-4442-b6e7-256426e715e9">
-<span class="eqno">(1)<a class="headerlink" href="#equation-bc13603f-4102-4442-b6e7-256426e715e9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-93895fa8-a38f-44d4-9d98-b49a557d28d2">
+<span class="eqno">(1)<a class="headerlink" href="#equation-93895fa8-a38f-44d4-9d98-b49a557d28d2" title="Permalink to this equation">#</a></span>\[\begin{equation}
 	 I = \int_V f(\textbf{x}) \, d\textbf{x} = \int_V
 	 \frac{f(\textbf{x})}{h(\textbf{x})} h(\textbf{x}) \, d\textbf{x} 
 	 = \left&lt; \frac{f(\textbf{x})}{h(\textbf{x})} \right&gt;_{h(\textbf{x})}
@@ -838,14 +852,14 @@ generating random samples of <span class="math notranslate nohighlight">\(\textb
 distribution
 <span class="math notranslate nohighlight">\(h(\textbf{x})\)</span>. The simplest case is to uniformly generate <span class="math notranslate nohighlight">\(\textbf{x}\)</span>
 in the volume (<span class="math notranslate nohighlight">\(V\)</span>). In this way, <span class="math notranslate nohighlight">\(h(\textbf{x})\)</span> becomes constant as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e0f031bb-57a0-460c-89a9-bbc11b84373b">
-<span class="eqno">(2)<a class="headerlink" href="#equation-e0f031bb-57a0-460c-89a9-bbc11b84373b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e43b5b12-113a-42e2-9924-e8afde71a4d5">
+<span class="eqno">(2)<a class="headerlink" href="#equation-e43b5b12-113a-42e2-9924-e8afde71a4d5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 	h(\textbf{x}) = \frac{1}{V}
 	\label{eq.uniformDist}
 \end{equation}\]</div>
 <p>Using this sampling density <span class="math notranslate nohighlight">\(h(\textbf{x})\)</span>, the integral becomes</p>
-<div class="amsmath math notranslate nohighlight" id="equation-63c78a46-fe6a-4ea1-aa0e-dca876654f2f">
-<span class="eqno">(3)<a class="headerlink" href="#equation-63c78a46-fe6a-4ea1-aa0e-dca876654f2f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-28b8bfc9-c2e0-496b-aa50-ce3003e7c466">
+<span class="eqno">(3)<a class="headerlink" href="#equation-28b8bfc9-c2e0-496b-aa50-ce3003e7c466" title="Permalink to this equation">#</a></span>\[\begin{equation}
 	I = \int_V f(\textbf{x}) \, d\textbf{x} \approx \frac{V}{N} \sum_{i=1}^N
 	f(\textbf{x}_i)
 	\label{eq.averageUniform}
