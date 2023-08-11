@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Group Homework Assignment - Day 7 &amp; 8 &#8212; UC Berkeley Chem 280  documentation</title>
+    <title>Individual Homework Assignment 1 &#8212; UC Berkeley Chem 280  documentation</title>
   
   
   
@@ -49,11 +49,13 @@
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'day7/group-assignment';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'individual-assignments/individual-assignment-1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Day 8" href="../day8.html" />
-    <link rel="prev" title="Arrays, Pointers, Memory, and Vectors" href="02-pointers.html" />
+    <link rel="next" title="Group Homework Assignment Day 3" href="../day3/group-assignment.html" />
+    <link rel="prev" title="Cut-offs and Periodic Boundaries" href="../day3/02-computational-tricks.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -204,7 +206,7 @@
                     </li>
                 
 
-                    <li class="nav-item current active">
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../day8.html">
                         Day 8
                       </a>
@@ -218,7 +220,7 @@
                     </li>
                 
 
-                    <li class="nav-item">
+                    <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../individual-assignments.html">
                         Individual Assignments
                       </a>
@@ -428,7 +430,7 @@ document.write(`
                     </li>
                 
 
-                    <li class="nav-item current active">
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../day8.html">
                         Day 8
                       </a>
@@ -442,7 +444,7 @@ document.write(`
                     </li>
                 
 
-                    <li class="nav-item">
+                    <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../individual-assignments.html">
                         Individual Assignments
                       </a>
@@ -542,15 +544,11 @@ document.write(`
         <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../day8/01-references.html">References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../day8/02-functions.html">Function Calling and Arguments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../day8/03-namespaces.html">Namespaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../day8/04-exceptions.html">Exceptions</a></li>
-</ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../individual-assignments/individual-assignment-3.html">Individual Homework Assignment 3</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Group Homework Assignment - Day 7 &amp; 8</a></li>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Individual Homework Assignment 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="individual-assignment-2.html">Individual Homework Assignment 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="individual-assignment-3.html">Individual Homework Assignment 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="individual-assignment-4.html">Individual Homework Assignment 4</a></li>
 </ul>
 </div>
 </nav></div>
@@ -589,9 +587,9 @@ document.write(`
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../day7.html" class="nav-link">Day 7</a></li>
+    <li class="breadcrumb-item"><a href="../day3.html" class="nav-link">Day 3</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Group Homework Assignment - Day 7 &amp; 8</li>
+    <li class="breadcrumb-item active" aria-current="page">Individual Homework Assignment 1</li>
   </ul>
 </nav>
 </div>
@@ -608,151 +606,27 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="group-homework-assignment-day-7-8">
-<h1>Group Homework Assignment - Day 7 &amp; 8<a class="headerlink" href="#group-homework-assignment-day-7-8" title="Permalink to this heading">#</a></h1>
-<p>Your group assignment for today (and tomorrow) is to rewrite your
-Python Monte Carlo code into C++.</p>
-<p>Begin by looking through your mcsim code and determining common data structures
-that you are using (ie, a list of coordinates).  Think about what C++ data
-types you would use for those.</p>
-<p>First, identify which functions are standalone - that is, they do not call
-other functions that you would have to write. Focus on rewriting these
-functions first. Which functions are these?</p>
-<p>Test the functions by calling them from <code class="docutils literal notranslate"><span class="pre">main</span></code> with values for which you
-know the result – we will cover testing in C++ later.</p>
-<p>After you have the simple functions, find the next functions you can rewrite,
-which should be functions that only call the already-written functions. This
-is the basic workflow of refactoring and rewriting code.</p>
-<section id="random-number-generation">
-<h2>Random number generation<a class="headerlink" href="#random-number-generation" title="Permalink to this heading">#</a></h2>
-<p>The random number generator given in the third individual homework can
-also be used here.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-c++" for="sd-tab-item-0">
-C++</label><div class="sd-tab-content docutils">
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;random&gt;</span><span class="c1"> // for random numbers</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="c1"> // for generating the seed</span>
-
-<span class="c1">// A Global! Probably shouldn&#39;t be used in real code</span>
-<span class="n">std</span><span class="o">::</span><span class="n">default_random_engine</span><span class="w"> </span><span class="n">re</span><span class="p">;</span>
-
-<span class="cm">/*! Generate a random double within a given range */</span>
-<span class="kt">double</span><span class="w"> </span><span class="nf">random_double</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">lower_bound</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">upper_bound</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">uniform_real_distribution</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">lower_bound</span><span class="p">,</span><span class="w"> </span><span class="n">upper_bound</span><span class="p">);</span>
-<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">re</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="cm">/*! Generate a random integer within a given range</span>
-<span class="cm">    The generated integer will be on the range [a,b)</span>
-<span class="cm">*/</span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">random_integer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">lower_bound</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">upper_bound</span><span class="p">)</span>
-<span class="p">{</span><span class="w">           </span>
-<span class="w">   </span><span class="c1">//dist will return [a,b] but we want [a,b)</span>
-<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">uniform_int_distribution</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">lower_bound</span><span class="p">,</span><span class="w"> </span><span class="n">upper_bound</span><span class="mi">-1</span><span class="p">);</span>
-<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">re</span><span class="p">);</span>
-<span class="p">}</span><span class="w">  </span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="c1">// Initialize random number generation based on time</span>
-<span class="w">    </span><span class="n">re</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">now</span><span class="p">().</span><span class="n">time_since_epoch</span><span class="p">().</span><span class="n">count</span><span class="p">());</span>
-
-<span class="w">    </span><span class="cm">/*</span>
-<span class="cm">      Other code here</span>
-<span class="cm">    */</span>
-<span class="p">}</span>
-</pre></div>
+  <section class="tex2jax_ignore mathjax_ignore" id="individual-homework-assignment-1">
+<h1>Individual Homework Assignment 1<a class="headerlink" href="#individual-homework-assignment-1" title="Permalink to this heading">#</a></h1>
+<div class="overview admonition">
+<p class="admonition-title">Overview</p>
+<p>Questions:</p>
+<ul class="simple">
+<li><p>What is the first individual homework assignment?</p></li>
+</ul>
+<p>Objectives:</p>
+<ul class="simple">
+<li><p>Perform another Monte Carlo method to calculate the value of an integral.</p></li>
+</ul>
 </div>
-</div>
-</div>
-</section>
-<section id="default-arguments">
-<h2>Default Arguments<a class="headerlink" href="#default-arguments" title="Permalink to this heading">#</a></h2>
-<p>Function arguments can also have default values, just like in python. The syntax
-is the same. However, keep in mind that the default argument must be of the same
-type as the variable, and C++ does not have a <code class="docutils literal notranslate"><span class="pre">None</span></code> type. What would be a
-good default <code class="docutils literal notranslate"><span class="pre">box_length</span></code>?</p>
-</section>
-<section id="reading-xyz-files">
-<h2>Reading XYZ files<a class="headerlink" href="#reading-xyz-files" title="Permalink to this heading">#</a></h2>
-<p>Below is the function for reading XYZ files in C++. Notice the <code class="docutils literal notranslate"><span class="pre">typedefs</span></code>
-and the example of how to use it in <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-1" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" data-sync-id="tabcode-c++" for="sd-tab-item-1">
-C++</label><div class="sd-tab-content docutils">
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Include these at the top of your file</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span><span class="c1"> // for reading/writing files</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;array&gt;</span><span class="c1">   // for std::array</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="c1">  // for std::vector</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utility&gt;</span><span class="c1"> // for std::pair</span>
-
-<span class="c1">// Make some types more convenient</span>
-<span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">AtomCoord</span><span class="p">;</span>
-<span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">AtomCoord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Coordinates</span><span class="p">;</span>
-
-<span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Coordinates</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">read_xyz</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">file_path</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="c1">// Opens up a file stream for input</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="nf">infile</span><span class="p">(</span><span class="n">file_path</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// Check that it was successfully opened</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">infile</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span>
-<span class="w">    </span><span class="p">{</span><span class="w">   </span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;File path in read_xyz does not exist!&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dummy</span><span class="p">;</span><span class="w"> </span><span class="c1">// Data that is thrown away (box length, atom indices)</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">box_length</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num_atoms</span><span class="p">;</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="c1">// Grab box_length from first number, throw the rest away</span>
-<span class="w">    </span><span class="n">infile</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">box_length</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">dummy</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">dummy</span><span class="p">;</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="c1">// now the number of atoms</span>
-<span class="w">    </span><span class="n">infile</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">num_atoms</span><span class="p">;</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="c1">// Uncomment to help troubleshoot</span>
-<span class="w">    </span><span class="c1">//std::cout &lt;&lt; &quot;Box length: &quot; &lt;&lt; box_length &lt;&lt; &quot; natoms: &quot; &lt;&lt; num_atoms &lt;&lt; std::endl;</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="c1">// Stores the atomic coordinates</span>
-<span class="w">    </span><span class="c1">// Remember, this is a vector of arrays</span>
-<span class="w">    </span><span class="n">Coordinates</span><span class="w"> </span><span class="n">coords</span><span class="p">;</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num_atoms</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span><span class="w">   </span>
-<span class="w">        </span><span class="n">AtomCoord</span><span class="w"> </span><span class="n">coord</span><span class="p">;</span>
-<span class="w">        </span>
-<span class="w">        </span><span class="c1">// Throws away the atom index</span>
-<span class="w">        </span><span class="n">infile</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">dummy</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">coord</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">coord</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">coord</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
-<span class="w">        </span>
-<span class="w">        </span><span class="c1">// Add to the vector</span>
-<span class="w">        </span><span class="n">coords</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">coord</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// Makes an appropriate pair object</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span><span class="w"> </span><span class="n">box_length</span><span class="p">);</span>
-<span class="p">}</span>
-
-
-<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="cm">/* other code here */</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Coordinates</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">xyz_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read_xyz</span><span class="p">(</span><span class="s">&quot;../lj_sample_configurations/lj_sample_config_periodic1.txt&quot;</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">Coordinates</span><span class="w"> </span><span class="n">coords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xyz_info</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">box_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xyz_info</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// can now use box_length and coords</span>
-
-<span class="w">    </span><span class="cm">/* other code here */</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
+<section id="individual-homework-assignment">
+<h2>Individual Homework Assignment<a class="headerlink" href="#individual-homework-assignment" title="Permalink to this heading">#</a></h2>
+<p>This should be completed by each group member individually. <strong>Individual assignments are due one week after being assigned</strong>. The due date for this assignment is due in one week.</p>
+<p>Write a Python script that estimates the value of $<span class="math notranslate nohighlight">\(\pi\)</span>$ by evaluating the following integral using Monte Carlo integration:</p>
+<div class="math notranslate nohighlight">
+\[ \int_{0}^{1} \frac{1}{1 + x^2} dx \]</div>
+<p>This integral will evaluate to <span class="math notranslate nohighlight">\(\frac{\pi}{4} \)</span>.</p>
+<p>Click <a class="reference external" href="https://classroom.github.com/a/argLZwqs">this link</a> to start the assignment.</p>
 </section>
 </section>
 
@@ -768,20 +642,20 @@ C++</label><div class="sd-tab-content docutils">
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="02-pointers.html"
+       href="../day3/02-computational-tricks.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Arrays, Pointers, Memory, and Vectors</p>
+        <p class="prev-next-title">Cut-offs and Periodic Boundaries</p>
       </div>
     </a>
     <a class="right-next"
-       href="../day8.html"
+       href="../day3/group-assignment.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Day 8</p>
+        <p class="prev-next-title">Group Homework Assignment Day 3</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -803,15 +677,13 @@ C++</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-number-generation">Random number generation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#default-arguments">Default Arguments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-xyz-files">Reading XYZ files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-homework-assignment">Individual Homework Assignment</a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
-    <a href="../_sources/day7/group-assignment.md.txt">
+    <a href="../_sources/individual-assignments/individual-assignment-1.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
